@@ -70,7 +70,7 @@ class GWG_Metaboxes {
 
         wp_nonce_field( 'gwg_shortcode_nonce_action', 'gwg_shortcode_nonce_action_name' );
 
-        require_once GWG_PLUGIN_PATH . '/admin/views/settings.php';
+        require_once GWG_PLUGIN_PATH . '/admin/views/metabox.php';
 
     }
 
