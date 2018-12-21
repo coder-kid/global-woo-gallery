@@ -19,7 +19,7 @@ if( ! class_exists('Global_Woo_Products_Gallery_Shortcode') ) {
 		/**
 		 * @return Global_Woo_Products_Gallery_Shortcode
 		 */
-		public static function get_instance() {
+		public static function instance() {
 			if ( ! self::$_instance ) {
 				self::$_instance = new self();
 			}
@@ -68,10 +68,8 @@ if( ! class_exists('Global_Woo_Products_Gallery_Shortcode') ) {
 				'supports'        => [ 'title' ]
 			];
 	
-			register_post_type( 'mr_wpg_shortcodes', $args );
+			register_post_type( 'gwg_shortcodes', $args );
 		}
 	
 	}
-	
-	new Global_Woo_Products_Gallery_Shortcode;
 }

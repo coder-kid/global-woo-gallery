@@ -1,0 +1,14 @@
+$bg_color: 'red';
+
+body {
+    background: $bg_color;
+}
+
+h1 {
+    color: $bg_color;
+    transition: all .3s ease-in-out;
+}
+
+h2 {
+    font-size: 35px;
+}

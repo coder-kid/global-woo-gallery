@@ -23,6 +23,11 @@ if( ! class_exists('Global_Woo_Gallery') ) {
          * @var $version string
          */
         protected $version = '1.0.0';
+
+        /**
+         * @var GWG_Metaboxes | $meta_box
+         */
+        public $metabox;
         
         /**
          * Instance of this class
@@ -50,6 +55,7 @@ if( ! class_exists('Global_Woo_Gallery') ) {
         public function __construct() {
             $this->define_constants();
             $this->includes();
+			$this->instantiate();
         }
 
         /**
@@ -59,13 +65,13 @@ if( ! class_exists('Global_Woo_Gallery') ) {
          */
         public function define_constants() {
 
-            $this->define( 'GWS_PLUGIN_FILE', __FILE__ );
-            $this->define( 'GWS_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
-            $this->define( 'GWS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-            $this->define( 'GWS_VERSION', $this->version() );
-            $this->define( 'GWS_PLUGIN_INCLUDE_PATH', trailingslashit( plugin_dir_path( __FILE__ ) . 'includes' ) );
-            $this->define( 'GWS_PLUGIN_DIRNAME', dirname( plugin_basename( __FILE__ ) ) );
-            $this->define( 'GWS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+            $this->define( 'GWG_PLUGIN_FILE', __FILE__ );
+            $this->define( 'GWG_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
+            $this->define( 'GWG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+            $this->define( 'GWG_VERSION', $this->version() );
+            $this->define( 'GWG_PLUGIN_INCLUDE_PATH', trailingslashit( plugin_dir_path( __FILE__ ) . 'includes' ) );
+            $this->define( 'GWG_PLUGIN_DIRNAME', dirname( plugin_basename( __FILE__ ) ) );
+            $this->define( 'GWG_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
         }
 
@@ -78,17 +84,23 @@ if( ! class_exists('Global_Woo_Gallery') ) {
         public function includes() {
 
             require_once $this->include_path('class-global-woo-products-gallery-shortcodes.php');
+            require_once $this->include_path('class-global-woo-products-metabox.php');
 
         }
 
         public function include_path( $file ) {
             $file = ltrim( $file, '/' );
             
-            return GWS_PLUGIN_INCLUDE_PATH . $file;
+            return GWG_PLUGIN_INCLUDE_PATH . $file;
         }
 
         public function version() {
             return esc_attr( $this->version );
+        }
+
+        public function instantiate() {
+            $this->metabox   = GWG_Metaboxes::instance();
+            $this->shortcode = Global_Woo_Products_Gallery_Shortcode::instance();
         }
 
     }

@@ -1,0 +1,27 @@
+{
+  "name": "global-woo-gallery",
+  "version": "1.0.0",
+  "description": "Amazing WooCommerce products gallery with colors and buttons.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coder-kid/global-woo-gallery.git"
+  },
+  "author": "Mahfuz Rahman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coder-kid/global-woo-gallery/issues"
+  },
+  "homepage": "https://github.com/coder-kid/global-woo-gallery#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
+  }
+}
