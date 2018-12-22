@@ -40,7 +40,7 @@ class GWG_Metaboxes {
 	 * @since 1.0.0
 	 */
     public function __construct() {
-        // $this->metaboxform = new GWG_Metabox_Form();
+        $this->metaboxform = new GWPG_Controls_Manager();
         add_action( 'add_meta_boxes', [$this, 'generate_metaboxes'] );
         add_action( 'save_post', [$this, 'save_gwg_metaboxes'] );
     }

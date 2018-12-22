@@ -85,6 +85,7 @@ if( ! class_exists('Global_Woo_Gallery') ) {
             require_once $this->include_path('class-global-woo-products-gallery-shortcodes.php');
             require_once $this->include_path('class-global-woo-products-metabox.php');
             require_once $this->include_path('class-enqueue-scripts.php');
+            require_once $this->include_path('class-controls-manager.php');
 
         }
 

@@ -64,12 +64,10 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 		
 			<div id="gwpg-metabox-tab-configuration" class="gwpg-metabox-tab-content active">
 				<div id="gwpg-metabox-section-config" class="gwpg-metabox-section">
-					<h2 class="gwpg-metabox-section-title"><span>Select Source</span></h2>
+					<h2 class="gwpg-metabox-section-title"><span>General Settings</span></h2>
 					
 					<div class="gwpg-metabox-section-content">
-						<table class="gwpg-metabox-form-table form-table">
-
-						</table>
+						<?php include_once 'partials/general-settings.php'; ?>
 					</div>
 				</div>
 			</div>
