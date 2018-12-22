@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Global WooCommerce Products Gallery
  * Plugin URI: https://wordpress.org/plugins/global-woo-gallery/

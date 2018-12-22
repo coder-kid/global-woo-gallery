@@ -21,28 +21,35 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 				<li class="gwpg-metabox-tab active" data-tab="configuration">
 					<a href="#gwpg-metabox-tab-configuration" data-tab="configuration">
 						<span class="gwpg-metabox-tab-number">1</span>
-						<span class="gwpg-metabox-tab-title">Source</span>
+						<span class="gwpg-metabox-tab-title">General</span>
 					</a>
 				</li>
 
 				<li class="gwpg-metabox-tab" data-tab="content">
 					<a href="#gwpg-metabox-tab-content" data-tab="content">
 						<span class="gwpg-metabox-tab-number">2</span>
-						<span class="gwpg">Content</span>
+						<span class="gwpg">Gallery</span>
 					</a>
 				</li>
 
 				<li class="gwpg-metabox-tab" data-tab="display">
 					<a href="#gwpg-metabox-tab-display" data-tab="display">
 						<span class="gwpg-metabox-tab-number">3</span>
-						<span class="gwpg-metabox-tab-title">Display</span>
+						<span class="gwpg-metabox-tab-title">Style</span>
 					</a>
 				</li>
 				
 				<li class="gwpg-metabox-tab" data-tab="customize">
 					<a href="#gwpg-metabox-tab-customize" data-tab="customize">
 						<span class="gwpg-metabox-tab-number">4</span>
-						<span class="gwpg-metabox-tab-title">Customize</span>
+						<span class="gwpg-metabox-tab-title">Typography</span>
+					</a>
+				</li>
+
+				<li class="gwpg-metabox-tab" data-tab="gopro">
+					<a href="#gwpg-metabox-tab-gopro" data-tab="gopro">
+						<span class="gwpg-metabox-tab-number">5</span>
+						<span class="gwpg-metabox-tab-title">Go Pro</span>
 					</a>
 				</li>
 
@@ -95,6 +102,18 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 			<div id="gwpg-metabox-tab-customize" class="gwpg-metabox-tab-content">
 				<div id="gwpg-metabox-section-appearance" class="gwpg-metabox-section">
 					<h2 class="gwpg-metabox-section-title"><span>Appearance</span></h2>
+
+					<div class="gwpg-metabox-section-content">
+						<table class="gwpg-metabox-form-table form-table">
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div id="gwpg-metabox-tab-gopro" class="gwpg-metabox-tab-content">
+				<div id="gwpg-metabox-section-gopro" class="gwpg-metabox-section">
+					<h2 class="gwpg-metabox-section-title"><span>GoPro</span></h2>
 
 					<div class="gwpg-metabox-section-content">
 						<table class="gwpg-metabox-form-table form-table">
