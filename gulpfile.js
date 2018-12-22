@@ -6,9 +6,9 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 
 const files = {
-    css_src    : 'admin/assets/scss/gwpg.scss',
+    css_src    : 'admin/assets/sass/gwpg.sass',
     css_dest   : './admin/assets/css',
-    style_watch: 'admin/assets/scss/**/*.scss',
+    style_watch: 'admin/assets/sass/**/*.sass',
     js_src     : 'admin/assets/js/gwpg.js',
     js_dest    : './admin/assets/js',
     js_watch   : 'admin/assets/js/*.js'

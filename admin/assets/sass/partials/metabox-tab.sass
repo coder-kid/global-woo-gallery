@@ -1,0 +1,112 @@
+#gwg_shortcode_options
+    .inside
+        margin: 0
+        padding: 0
+    .hndle
+        display: none !important
+
+    &.postbox
+        background: none !important;
+        border: 0 !important;
+        box-shadow: none !important;
+
+
+
+.gwpg-metabox-tabs-wrapper
+    *
+        box-sizing: border-box
+
+    .gwpg-row
+        margin-bottom: 8px
+        float: left
+        width: 100%
+
+    .gwpg-metabox-tab-navigation 
+        a.gwpg-metabox-save-config
+            display: none;
+            padding: 10px 50px;
+    
+    .gwpg-metabox-tabs
+        background: #f9f9f9
+        float: left
+        width: 100%
+        margin: 0
+
+        .gwpg-metabox-tab
+            display: inline-block
+            float: left
+            margin: 0
+            &.active
+                margin-right: 0px
+
+                a
+                    background: #fff
+                    color: #000
+
+                    .gwpg-metabox-tab-number
+                        background: #375070;
+                        color: #fff;
+
+            a
+                color: #777
+                display: block
+                border-bottom: 1px solid #eee
+                outline: none
+                padding: 20px
+                text-decoration: none
+                -webkit-box-shadow: none
+                box-shadow: none
+                padding: 15px 20px
+                border-right: 1px solid #eee
+
+                .gwpg-metabox-tab-number
+                    display: inline-block;
+                    background: #ededed;
+                    border-radius: 100%;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    margin-right: 10px;
+
+
+    .gwpg-metabox-tabs-content
+        float: left
+        width: 100%
+        background: #fff
+
+        .gwpg-metabox-tab-content
+            &:not(.active)
+                display: none
+
+    .gwpg-metabox-tabs-footer
+        background: #f9f9f9
+        padding: 15px
+        float: left
+        width: 100%
+        margin: 0
+        border-top: 1px solid #eee
+
+        .gwpg-metabox-tab-navigation
+            float: right
+            
+            a
+                background: #365170
+                color: #fff
+                padding: 10px 40px
+                border: 0
+                border-radius: 4px
+                cursor: pointer
+                -webkit-transition: all .8s ease
+                transition: all .8s ease
+                text-decoration: none
+                text-transform: uppercase
+                display: inline-block
+
+                &:hover
+                    background: #243950
+
+                .dashicons
+                    font-size: 16px
+                    line-height: 1.26
+                    margin-left: 6px

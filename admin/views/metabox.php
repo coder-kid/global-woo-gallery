@@ -81,7 +81,7 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 
 			<div id="gwpg-metabox-tab-display" class="gwpg-metabox-tab-content">
 				<div id="gwpg-metabox-section-image_option" class="gwpg-metabox-section" style="display: block;">
-					<h2 class="gwpg-metabox-section-title"><span>Image</span><span class="ibx-wpfomo-tooltip-btn">?</span></h2>
+					<h2 class="gwpg-metabox-section-title"><span>Image</span><span class="gwpg-metabox-tooltip-btn">?</span></h2>
 
 					<div class="gwpg-metabox-section-content">
 						<p class="gwpg-metabox-section-description">By default the notification will display the custom avatar from the email address, below settings will override this.</p>
