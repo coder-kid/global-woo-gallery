@@ -94,7 +94,7 @@ class GWPG_Controls_Manager {
 		$multiple = isset( $args['multiple'] ) ? 'multiple' : '';
 
 		echo $this->field_before( $args );
-		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-input-text sp-wps-select" %3$s>', $name, $args['id'],
+		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-select" %3$s>', $name, $args['id'],
             $multiple );
 		foreach ( $args['options'] as $key => $option ) {
 			$selected = ( $value == $key ) ? ' selected="selected"' : '';
@@ -162,24 +162,11 @@ class GWPG_Controls_Manager {
 		echo $this->field_before( $args );
 		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-input-text gwpg-metabox-select gwpg-metabox_products_from" %3$s>', $name, $args['id'],
             $multiple ); ?>
-		<option value="latest">Latest</option>
-		<option value="featured" disabled>Featured (Pro)</option>
-		<option value="products_from_category" disabled>Products from Category (Pro)</option>
-		<option value="products_from_exclude_category" disabled>Products from Exclude Category (Pro)</option>
-		<option value="products_from_tag" disabled>Products from Tag (Pro)</option>
-		<option value="products_from_exclude_tag" disabled>Products from Exclude Tag (Pro)</option>
-		<option value="best_selling" disabled>Best Selling (Pro)</option>
-		<option value="related_products" disabled>Related Products (Pro)</option>
-		<option value="upsells" disabled>Upsells (Pro)</option>
-		<option value="cross-sells" disabled>Cross Sells (Pro)</option>
-		<option value="top_rated" disabled>Top Rated (Pro)</option>
-		<option value="on_sale" disabled>On Sale (Pro)</option>
-		<option value="specific_products" disabled>Specific Products (Pro)</option>
-		<option value="most_viewed" disabled>Most Viewed (Pro)</option>
-		<option value="recently_viewed" disabled>Recently Viewed (Pro)</option>
-		<option value="products_from_sku" disabled>Products from SKU (Pro)</option>
-		<option value="products_from_attribute" disabled>Products from Attribute (Pro)</option>
-		<option value="free_products" disabled>Free Products (Pro)</option>
+		<option value="latest">Recent Products</option>
+		<option value="featured">Featured Products</option>
+		<option value="best_selling">Best Selling Products</option>
+		<option value="sale_products">Sale Products</option>
+		<option value="top_rated_products">Top Rated Products</option>
 		<?php
 		echo '</select>';
 		echo $this->field_after();

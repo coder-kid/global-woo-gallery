@@ -21,7 +21,7 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 				<li class="gwpg-metabox-tab active" data-tab="configuration">
 					<a href="#gwpg-metabox-tab-configuration" data-tab="configuration">
 						<span class="gwpg-metabox-tab-number">1</span>
-						<span class="gwpg-metabox-tab-title">General</span>
+						<span class="gwpg-metabox-tab-title">Settings</span>
 					</a>
 				</li>
 
@@ -64,8 +64,7 @@ if( 'gwg_shortcodes' === $current_screen->post_type ) : ?>
 		
 			<div id="gwpg-metabox-tab-configuration" class="gwpg-metabox-tab-content active">
 				<div id="gwpg-metabox-section-config" class="gwpg-metabox-section">
-					<h2 class="gwpg-metabox-section-title"><span>General Settings</span></h2>
-					
+					<h2 class="gwpg-metabox-section-title"><span><?php _e('Product Settings', 'global-woo-gallery'); ?></span></h2>
 					<div class="gwpg-metabox-section-content">
 						<?php include_once 'partials/general-settings.php'; ?>
 					</div>

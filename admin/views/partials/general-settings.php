@@ -9,16 +9,9 @@
 ?>
 <div class="sp-wps-mbf-tab-content">
 
-	<?php
-        $this->metaboxform->select_slider_type( array(
-            'id'      => 'wps_slider_type',
-            'name'    => __( 'Slider Type', 'woo-product-slider' ),
-            'desc'    => __( 'Select which slider you want to display.', 'woo-product-slider' ),
-            'default' => 'product_slider'
-        ));
-        
+	<?php        
         $this->metaboxform->select( array(
-            'id'      => 'wps_themes',
+            'id'      => 'gwpg_product_themes',
             'name'    => __( 'Select Theme', 'woo-product-slider' ),
             'desc'    => __( 'Select which theme you want to display.', 'woo-product-slider' ),
             'options' => array(
@@ -30,49 +23,49 @@
         ));
 
         $this->metaboxform->select_products_from( array(
-            'id'      => 'wps_products_from',
+            'id'      => 'gwpg_products_from',
             'name'    => __( 'Product From', 'woo-product-slider' ),
             'desc'    => __( 'Select an option to show the product from.', 'woo-product-slider' ),
             'default' => 'latest'
         ));
 
         $this->metaboxform->number( array(
-            'id'      => 'wps_number_of_column',
+            'id'      => 'gwpg_number_of_column',
             'name'    => __( 'Number of Column', 'woo-product-slider' ),
             'desc'    => __( 'Set number of column for the screen larger than 1100px.', 'woo-product-slider' ),
             'default' => 4
         ));
 
         $this->metaboxform->number( array(
-            'id'      => 'wps_number_of_column_desktop',
+            'id'      => 'gwpg_number_of_column_desktop',
             'name'    => __( 'Number of Column on Desktop', 'woo-product-slider' ),
             'desc'    => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'woo-product-slider' ),
             'default' => 3
         ));
 
         $this->metaboxform->number( array(
-            'id'      => 'wps_number_of_column_tablet',
+            'id'      => 'gwpg_number_of_column_tablet',
             'name'    => __( 'Number of Column on Tablet', 'woo-product-slider' ),
             'desc'    => __( 'Set number of column on tablet for the screen smaller than 990px.', 'woo-product-slider' ),
             'default' => 2
         ));
 
         $this->metaboxform->number( array(
-            'id'      => 'wps_number_of_column_mobile',
+            'id'      => 'gwpg_number_of_column_mobile',
             'name'    => __( 'Number of Column on Mobile', 'woo-product-slider' ),
             'desc'    => __( 'Set number of column on mobile for the screen smaller than 650px.', 'woo-product-slider' ),
             'default' => 1
         ));
 
         $this->metaboxform->number( array(
-            'id'      => 'wps_number_of_total_products',
+            'id'      => 'gwpg_number_of_total_products',
             'name'    => __( 'Total Products', 'woo-product-slider' ),
             'desc'    => __( 'Number of Total products to show.', 'woo-product-slider' ),
             'default' => 50
         ));
 
         $this->metaboxform->select( array(
-            'id'      => 'wps_order_by',
+            'id'      => 'gwpg_order_by',
             'name'    => __( 'Order By', 'woo-product-slider' ),
             'desc'    => __( 'Select an order by option.', 'woo-product-slider' ),
             'options' => array(
@@ -86,7 +79,7 @@
         ));
 
         $this->metaboxform->select( array(
-            'id'      => 'wps_order',
+            'id'      => 'gwpg_order',
             'name'    => __( 'Order', 'woo-product-slider' ),
             'desc'    => __( 'Select an order option', 'woo-product-slider' ),
             'options' => array(

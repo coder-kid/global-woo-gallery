@@ -38,6 +38,12 @@ class GWPG_Scripts {
     }
 
     public function admin_enqueue_scripts() {
+		wp_enqueue_script(
+			'select2.min',
+			GWPG_PLUGIN_URI . 'admin/assets/js/libs/select2.min.js',
+			['jquery'],
+			true
+		);
         wp_enqueue_script(
 			'gwpg-metabox',
 			GWPG_PLUGIN_URI . 'admin/assets/js/gwpg.min.js',
@@ -53,6 +59,11 @@ class GWPG_Scripts {
     }
 
     public function addmin_enqueue_style() {
+		wp_enqueue_style(
+            'select2.min',
+            GWPG_PLUGIN_URI . 'admin/assets/css/libs/select2.min.css',[],
+            GWPG_VERSION
+        );
         wp_enqueue_style(
             'gwpg-style',
             GWPG_PLUGIN_URI . 'admin/assets/css/gwpg.min.css',[],

@@ -14,6 +14,7 @@
 		_init: function() {
 			GWPG_Admin._initTabs();
 			GWPG_Admin._bindEvents();
+			GWPG_Admin._prettySelect();
         },
         
         /**
@@ -96,6 +97,18 @@
 			} else {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
+			}
+		},
+
+		/**
+		 * Initialize select2 js on metabox select fields
+		 * 
+		 * @method _prettySelect
+		 * @access private
+		 */
+		_prettySelect: function() {
+			if($.fn.select2) {
+				$('.gwpg-metabox-select').select2();
 			}
 		}
 
