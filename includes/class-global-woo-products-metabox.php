@@ -40,25 +40,7 @@ class GWG_Metaboxes {
 	 * @since 1.0.0
 	 */
     public function __construct() {
-        $this->metaboxform = new GWPG_Controls_Manager();
-        add_action( 'add_meta_boxes', [$this, 'generate_metaboxes'] );
-        add_action( 'save_post', [$this, 'save_gwg_metaboxes'] );
-    }
-
-    /**
-     * This function is responsible for generating actual metabox.
-     * 
-     * @since 1.0.0
-     */
-    public function generate_metaboxes() {
-        add_meta_box(
-            'gwg_shortcode_options',
-            __( 'Gallery Options', 'global-woo-gallery' ),
-            [$this, 'display_gwg_shortcode_metaboxes'],
-            'gwg_shortcodes',
-            'normal',
-            'default'
-        );
+        // $this->metaboxform = new GWPG_Controls_Manager();
     }
 
     /**
@@ -74,14 +56,7 @@ class GWG_Metaboxes {
 
     }
 
-    /**
-     * Save shortcodes metabox
-     * 
-     * @param $post_id
-     */
-    public function save_gwg_metaboxes( $post_id ) {
-
-    }
-
 
 }
+
+GWG_Metaboxes::instance();

@@ -86,6 +86,8 @@ if( ! class_exists('Global_Woo_Gallery') ) {
             require_once $this->include_path('class-global-woo-products-metabox.php');
             require_once $this->include_path('class-enqueue-scripts.php');
             require_once $this->include_path('class-controls-manager.php');
+            require_once $this->include_path('class-gwpg-metabox-framework.php');
+            require_once $this->include_path('metabox-options.php');
 
         }
 
