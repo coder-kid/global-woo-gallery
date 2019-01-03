@@ -1,6 +1,6 @@
 <?php
 
-$options      = array(); // remove old options
+$options      = []; // remove old options
 
 $options[]    = array(
   'name'          => 'settings',
@@ -9,7 +9,7 @@ $options[]    = array(
   'fields'    => array(
 	array(
 		'id'      => 'gwpg_product_themes',
-		'title'   => __( 'Select Theme', 'woo-product-slider' ),
+		'name'   => __( 'Select Theme', 'woo-product-slider' ),
 		'type'    => 'select',
 		'desc'    => __( 'Select which theme you want to display.', 'woo-product-slider' ),
 		'options' => array(
@@ -22,7 +22,7 @@ $options[]    = array(
     array(
       'id'    => 'another_option_id',
       'type'  => 'text',
-      'title' => 'Secondary Option',
+      'name' => 'Secondary Option',
     ),
   )
 );
@@ -35,12 +35,12 @@ $options[]    = array(
 		array(
 			'id'    => 'option_id',
 			'type'  => 'text',
-			'title' => 'First Option',
+			'name' => 'First Option',
 		),
 		array(
 			'id'    => 'another_option_id',
-			'type'  => 'textarea',
-			'title' => 'Secondary Option',
+			'type'  => 'text',
+			'name' => 'Secondary Option',
 		),
 	)
 );
@@ -53,12 +53,12 @@ $options[]    = array(
 		array(
 			'id'    => 'option_id',
 			'type'  => 'text',
-			'title' => 'First Option',
+			'name' => 'First Option',
 		),
 		array(
 			'id'    => 'another_option_id',
-			'type'  => 'textarea',
-			'title' => 'Secondary Option',
+			'type'  => 'text',
+			'name' => 'Secondary Option',
 		),
 	)
 );
@@ -71,12 +71,12 @@ $options[]    = array(
 		array(
 			'id'    => 'option_id',
 			'type'  => 'text',
-			'title' => 'First Option',
+			'name' => 'First Option',
 		),
 		array(
 			'id'    => 'another_option_id',
-			'type'  => 'textarea',
-			'title' => 'Secondary Option',
+			'type'  => 'text',
+			'name' => 'Secondary Option',
 		),
 	)
 );
@@ -88,12 +88,13 @@ $options[]    = array(
 		array(
 			'id'    => 'option_id',
 			'type'  => 'text',
-			'title' => 'First Option',
+			'name' => 'First Option',
 		),
 		array(
 			'id'    => 'another_option_id',
 			'type'  => 'textarea',
-			'title' => 'Secondary Option',
+			'name'  => 'Secondary Option',
+			'value' => 'Default Value'
 		),
 	)
 );

@@ -82,7 +82,7 @@ class GWPG_Metabox_Framework {
         if( ! empty($this->options) ) {
             add_action( 'add_meta_boxes', [$this, 'generate_metaboxes'] );
             $this->sections = $this->get_sections();
-            // $this->metaboxform = new GWPG_Controls_Manager();
+            $this->metaboxform = new GWPG_Controls_Manager();
         }
 
     }
@@ -141,8 +141,9 @@ class GWPG_Metabox_Framework {
                         $tab_number = 1;
                         echo '<ul class="gwpg-metabox-tabs" data-container=".gwpg-metabox-tabs-content">';
                         foreach($this->sections as $tab) {
+                            $active_tab = ($tab_number === 1) ? ' active' : '';
                             ?>
-                            <li class="gwpg-metabox-tab active" data-tab="<?php echo $tab['name']; ?>">
+                            <li class="gwpg-metabox-tab <?php echo $active_tab; ?>" data-tab="<?php echo $tab['name']; ?>">
                                 <a href="#gwpg-metabox-tab-<?php echo $tab['name']; ?>" data-tab="<?php echo $tab['name']; ?>">
                                     <span class="gwpg-metabox-tab-number"><?php echo $tab_number; ?></span>
                                     <span class="gwpg-metabox-tab-title"><?php echo $tab['name']; ?></span>
@@ -166,8 +167,6 @@ class GWPG_Metabox_Framework {
                     $section_count = 1;
                     foreach($this->sections as $section) :
                         $active_section = ($section_count === 1) ? ' active' : '';
-
-                        // echo "<pre>", var_dump($section), "</pre>"
                 ?>
                     <div id="gwpg-metabox-tab-<?php echo $section['name']; ?>" class="gwpg-metabox-tab-content<?php echo $active_section; ?>">
                         <div id="gwpg-metabox-section-<?php echo $section['name']; ?>" class="gwpg-metabox-section">
@@ -177,11 +176,9 @@ class GWPG_Metabox_Framework {
 
                             <div class="gwpg-metabox-section-content">
                                 <?php
-                                    // var_dump($this->metaboxform);
                                     if( isset($section['fields']) ) {
                                         foreach($section['fields'] as $field) {
-                                            // echo "<pre>", var_dump($field), "</pre>";
-                                            // $this->metaboxform->{$field['type']($field)};
+                                            $this->metaboxform->{$field['type']}($field);
                                         }
                                     }
                                 ?>

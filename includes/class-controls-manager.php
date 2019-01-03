@@ -23,6 +23,20 @@ class GWPG_Controls_Manager {
         echo $this->field_before( $args );
         echo sprintf( '<input type="text" class="gwpg-metabox-input-text" value="%1$s" id="%2$s" name="%3$s">%4$s', $value, $args['id'], $name, $after );
 		echo $this->field_after();
+	}
+	
+    /**
+     * textarea field
+     * 
+     * @param   array $args
+     */
+    public function textarea( array $args ) {
+		if( ! isset($args['id'], $args['name'])) return;
+
+        list( $name, $value, $after ) = $this->field_common( $args );
+        echo $this->field_before( $args );
+        echo sprintf( '<textarea class="gwpg-metabox-textarea" id="%2$s" name="%3$s">%1$s</textarea>%4$s', $value, $args['id'], $name, $after );
+		echo $this->field_after();
     }
 
     /**
