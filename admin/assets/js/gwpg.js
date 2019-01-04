@@ -25,14 +25,14 @@
 		 */
 		_initTabs: function()
 		{
-			if ( $('.gwpg-metabox-tab.active').next().length === 0 ) {
+			if(
+				($('.gwpg-metabox-tab.active').next().length === 0)
+				|| (window.location.hash === '#!gwpg-metabox-tab-gopro')
+			) {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
-            }
-            if( window.location.hash === '#!gwpg-metabox-tab-customize' ) {
-                $('.gwpg-metabox-next-tab').hide();
-				$('.gwpg-metabox-save-config').css('display', 'inline-block');
-            }
+			}
+
         },
         
         /**
@@ -58,7 +58,6 @@
 		_nextButtonClicked: function(e)
 		{
 			e.preventDefault();
-
 			if ( $('li.gwpg-metabox-tab.active').next().length > 0 ) {
 				$('li.gwpg-metabox-tab.active').next().find('a').trigger('click');
 			}
