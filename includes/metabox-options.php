@@ -33,12 +33,12 @@ $options[]    = array(
 	'section_title' => 'Gallery Settings',
 	'fields'    => array(
 		array(
-			'id'    => 'option_id',
+			'id'    => 'gallery_first_option',
 			'type'  => 'text',
 			'name' => 'First Option',
 		),
 		array(
-			'id'    => 'another_option_id',
+			'id'    => 'gallery_second_option',
 			'type'  => 'text',
 			'name' => 'Secondary Option',
 		),
@@ -51,12 +51,12 @@ $options[]    = array(
 	'section_title' => 'Gallery Stylizations',
 	'fields'        => array(
 		array(
-			'id'    => 'option_id',
+			'id'    => 'style_first_option',
 			'type'  => 'text',
 			'name' => 'First Option',
 		),
 		array(
-			'id'    => 'another_option_id',
+			'id'    => 'style_second_option',
 			'type'  => 'text',
 			'name' => 'Secondary Option',
 		),
@@ -69,12 +69,12 @@ $options[]    = array(
 	'section_title' => 'Gallery Typography',
 	'fields'    => array(
 		array(
-			'id'    => 'option_id',
+			'id'    => 'typography_first_option',
 			'type'  => 'text',
 			'name' => 'First Option',
 		),
 		array(
-			'id'    => 'another_option_id',
+			'id'    => 'typography_second_option',
 			'type'  => 'text',
 			'name' => 'Secondary Option',
 		),
@@ -86,12 +86,12 @@ $options[]    = array(
 	'title'     => 'GoPro',
 	'fields'    => array(
 		array(
-			'id'    => 'option_id',
-			'type'  => 'text',
+			'id'   => 'gopro_first_option',
+			'type' => 'text',
 			'name' => 'First Option',
 		),
 		array(
-			'id'    => 'another_option_id',
+			'id'    => 'gopro_second_option',
 			'type'  => 'textarea',
 			'name'  => 'Secondary Option',
 			'value' => 'Default Value'

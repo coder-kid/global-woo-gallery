@@ -83,6 +83,7 @@ class GWPG_Metabox_Framework {
             add_action( 'add_meta_boxes', [$this, 'generate_metaboxes'] );
             $this->sections = $this->get_sections();
             $this->metaboxform = new GWPG_Controls_Manager();
+            add_action( 'save_post', [$this, 'save_posts_data'] );
         }
 
     }
@@ -128,6 +129,8 @@ class GWPG_Metabox_Framework {
     }
 
     public function admin_page() {
+
+        wp_nonce_field( 'gwpg_metabox_nonce_fields_action', 'gwpg_metabox_nonce_fields_name' );
 
         echo '<div class="gwpg-metabox-tabs-wrapper gwpg-layout wp-clearfix">';
         ob_start();
@@ -197,11 +200,40 @@ class GWPG_Metabox_Framework {
 
             </div><!-- /.gwpg-row -->
 
-            
-
         <?php
         echo ob_get_clean();
         echo '</div>';
+    }
+
+    public function save_posts_data( $post_id ) {
+        
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+        }
+        
+        // Check if nonce is set
+		if ( ! isset( $_POST['gwpg_metabox_nonce_fields_name'], $_POST['gwpg_meta_box'] ) ) {
+			return;
+        }
+        
+        if ( ! wp_verify_nonce( $_POST['gwpg_metabox_nonce_fields_name'], 'gwpg_metabox_nonce_fields_action' ) ) {
+			return;
+        }
+        
+        // Check if user has permissions to save data
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+        }
+        
+        foreach ( $_POST['gwpg_meta_box'] as $key => $meta_value ) {
+
+			if ( is_array( $val ) ) {
+				$val = implode( ',', $val );
+			}
+
+			update_post_meta( $post_id, $key, sanitize_text_field( $meta_value ) );
+        }
+
     }
 
 
