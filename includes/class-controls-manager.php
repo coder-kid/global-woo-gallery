@@ -37,7 +37,32 @@ class GWPG_Controls_Manager {
         echo $this->field_before( $args );
         echo sprintf( '<textarea class="gwpg-metabox-textarea" id="%2$s" name="%3$s">%1$s</textarea>%4$s', $value, $args['id'], $name, $after );
 		echo $this->field_after();
-    }
+	}
+	
+	/**
+	 * slider
+	 * 
+	 * @param array $args
+	 */
+	public function slider(array $args) {
+		if ( ! isset( $args['id'], $args['name'] ) ) {
+			return;
+		}
+
+		list( $name, $value, $after ) = $this->field_common( $args );
+
+		echo $this->field_before($args);
+		ob_start();
+		?>
+		<div class="range-slider">
+			<span>
+				<input class="range-slider__range" type="range" value="" />
+				<!-- <span class="range-slider__value">0</span> -->
+			</span>
+		</div>
+		<?php
+		echo ob_get_clean(), $this->field_after();
+	}
 
     /**
 	 * text

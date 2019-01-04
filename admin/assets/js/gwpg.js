@@ -25,10 +25,10 @@
 		 */
 		_initTabs: function()
 		{
-			if(
-				($('.gwpg-metabox-tab.active').next().length === 0)
-				|| (window.location.hash === '#!gwpg-metabox-tab-gopro')
-			) {
+			var tabLength = ($('.gwpg-metabox-tab').length) - 1,
+				lastTab   = $('.gwpg-metabox-tab').eq(tabLength);
+
+			if( ($('.gwpg-metabox-tab.active').next().length === 0) || lastTab ) {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
 			}
