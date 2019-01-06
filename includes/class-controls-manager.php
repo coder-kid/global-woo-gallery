@@ -172,11 +172,19 @@ class GWPG_Controls_Manager {
 		}
 
 		list( $name, $value, $after ) = $this->field_common( $args );
-		$min = isset( $args['min'] ) ? $args['min'] : null;
-		$max = isset( $args['max'] ) ? $args['max'] : null;
+		$min = $step = $max = '';
+		if( isset($args['atts']) && isset($args['atts']['min']) ) {
+			$min = "min='{$args['atts']['min']}'";
+		}
+		if( isset($args['atts']) && isset($args['atts']['step']) ) {
+			$step = "step='{$args['atts']['step']}'";
+		}
+		if( isset($args['atts']) && isset($args['atts']['max']) ) {
+			$max = "max='{$args['atts']['max']}'";
+		}
 
 		echo $this->field_before( $args );
-		echo sprintf( '<input type="number" class="gwpg-metabox-input-number" value="%1$s" id="%2$s" name="%3$s">%4$s', $value, $args['id'], $name, $after );
+		echo sprintf( '<input type="number" class="gwpg-metabox-input-number" %5$s %6$s %7$s value="%1$s" id="%2$s" name="%3$s">%4$s', $value, $args['id'], $name, $after, $min, $step, $max );
 		echo $this->field_after();
 	}
     

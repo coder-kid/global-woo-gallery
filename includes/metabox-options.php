@@ -55,10 +55,15 @@ $options[]    = array(
 			'default' => '3'
 		],
 		[
-			'id'    => 'gwpg_products_column_on_desktop',
-			'name'  => __( 'Number Of Column On Desktop', 'global-woo-gallery' ),
-			'type'  => 'number',
-			'desc'  => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'global-woo-gallery' ),
+			'id'   => 'gwpg_products_column_on_desktop',
+			'name' => __( 'Number Of Column On Desktop', 'global-woo-gallery' ),
+			'type' => 'number',
+			'atts' => [
+				'min'	=> 1,
+				'step'	=> 1,
+				'max'	=> 6
+			],
+			'desc'    => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'global-woo-gallery' ),
 			'default' => '3'
 		],
 		[
