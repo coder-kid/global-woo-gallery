@@ -15,6 +15,32 @@
 			GWPG_Admin._initTabs();
 			GWPG_Admin._bindEvents();
 			GWPG_Admin._prettySelect();
+			GWPG_Admin._rangeSliderControl();
+		},
+		
+		/**
+         * Range slider value control
+		 * 
+		 * @method _rangeSliderControl
+		 * @access private
+         */
+        _rangeSliderControl: function() {
+            var slider = $('.range-slider')
+                range  = $('.range-slider__range'),
+				value  = $('.range-slider__value');
+
+			slider.each(function() {
+				
+				value.each(function() {
+					var value = $(this).prev().attr('value');
+					$(this).html(value + 'px');
+				});
+
+				range.on('input', function() {
+					$(this).next(value).html(this.value + 'px' );
+				});
+				
+			});
         },
         
         /**
@@ -26,9 +52,9 @@
 		_initTabs: function()
 		{
 			var tabLength = ($('.gwpg-metabox-tab').length) - 1,
-				lastTab   = $('.gwpg-metabox-tab').eq(tabLength);
+				$cl       = (window.location.hash);
 
-			if( ($('.gwpg-metabox-tab.active').next().length === 0) || lastTab ) {
+			if( ($('.gwpg-metabox-tab.active').next().length === 0) || $cl == '#!gwpg-metabox-tab-gopro' ) {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
 			}

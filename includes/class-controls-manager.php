@@ -56,8 +56,10 @@ class GWPG_Controls_Manager {
 		?>
 		<div class="range-slider">
 			<span>
-				<input class="range-slider__range" type="range" value="" />
-				<!-- <span class="range-slider__value">0</span> -->
+				<?php
+					echo sprintf('<input class="range-slider__range" name="%s" type="range" value="%s" />%s', $name, $value, $after);
+				?>
+				<span class="range-slider__value">0</span>
 			</span>
 		</div>
 		<?php

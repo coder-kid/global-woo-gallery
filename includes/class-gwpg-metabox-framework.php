@@ -206,7 +206,7 @@ class GWPG_Metabox_Framework {
     }
 
     public function save_posts_data( $post_id ) {
-        
+
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
         }

@@ -20,7 +20,7 @@ $options[]    = array(
 		'default' => 'theme_one'
 	),
     array(
-      'id'   => 'another_option_id',
+      'id'   => 'slider_option_id',
       'type' => 'slider',
       'name' => 'Secondary Option',
     ),

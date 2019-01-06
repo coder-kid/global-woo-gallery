@@ -1,6 +1,6 @@
 .range-slider__range
     -webkit-appearance: none
-    width: calc(100% - (95px))
+    width: calc(100% - (150px))
     height: 5px
     -webkit-border-radius: 5px
     border-radius: 5px
@@ -43,27 +43,13 @@
         background: #1abc9c
 
 .range-slider__value
-    display: inline-block
-    position: relative
-    width: 60px
-    color: #fff
-    line-height: 20px
-    text-align: center
-    border-radius: 3px
-    background: #243950
-    padding: 5px 10px
-    margin-left: 8px
-
-    &:after
-        position: absolute
-        top: 8px
-        left: -7px
-        width: 0
-        height: 0
-        border-top: 7px solid transparent
-        border-right: 7px solid #243950
-        border-bottom: 7px solid transparent
-        content: ''
+    display: inline-block;
+    height: 35px;
+    width: 45px !important;
+    text-align: center;
+    line-height: 34px;
+    border: 1px solid #eee;
+    margin-left: 15px
 
 
 ::-moz-range-track
