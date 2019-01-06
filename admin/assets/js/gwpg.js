@@ -32,12 +32,14 @@
 			slider.each(function() {
 				
 				value.each(function() {
+					var suffix = ($(this).prev().attr('suffix')) ? $(this).prev().attr('suffix') : '';
 					var value = $(this).prev().attr('value');
-					$(this).html(value + 'px');
+					$(this).html(value + suffix);
 				});
 
 				range.on('input', function() {
-					$(this).next(value).html(this.value + 'px' );
+					var suffix = ($(this).attr('suffix')) ? $(this).attr('suffix') : '';
+					$(this).next(value).html(this.value + suffix );
 				});
 				
 			});
@@ -54,7 +56,7 @@
 			var tabLength = ($('.gwpg-metabox-tab').length) - 1,
 				$cl       = (window.location.hash);
 
-			if( ($('.gwpg-metabox-tab.active').next().length === 0) || $cl == '#!gwpg-metabox-tab-gopro' ) {
+			if( ($('.gwpg-metabox-tab.active').next().length === 0) ) {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
 			}
@@ -133,7 +135,9 @@
 		 */
 		_prettySelect: function() {
 			if($.fn.select2) {
-				$('.gwpg-metabox-select').select2();
+				$('.gwpg-metabox-select').select2({
+					width: 'resolve' // need to override the changed default
+				});
 			}
 		}
 

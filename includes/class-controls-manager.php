@@ -50,6 +50,22 @@ class GWPG_Controls_Manager {
 		}
 
 		list( $name, $value, $after ) = $this->field_common( $args );
+		$min = $step = $max = '';
+		if( isset($args['atts']) && isset($args['atts']['min']) ) {
+			$min = "min='{$args['atts']['min']}'";
+		}
+		if( isset($args['atts']) && isset($args['atts']['step']) ) {
+			$step = "step='{$args['atts']['step']}'";
+		}
+		if( isset($args['atts']) && isset($args['atts']['max']) ) {
+			$max = "max='{$args['atts']['max']}'";
+		}
+
+		if( isset($args['atts']) && isset($args['atts']['suffix']) ) {
+			$suffix = "suffix='{$args['atts']['suffix']}'";
+		}else {
+			$suffix = '';
+		}
 
 		echo $this->field_before($args);
 		ob_start();
@@ -57,7 +73,7 @@ class GWPG_Controls_Manager {
 		<div class="range-slider">
 			<span>
 				<?php
-					echo sprintf('<input class="range-slider__range" name="%s" type="range" value="%s" />%s', $name, $value, $after);
+					echo sprintf('<input class="range-slider__range" %s %s %s %s name="%s" type="range" value="%s" />%s', $min, $max, $step, $suffix, $name, $value, $after);
 				?>
 				<span class="range-slider__value">0</span>
 			</span>
@@ -135,7 +151,7 @@ class GWPG_Controls_Manager {
 		$multiple = isset( $args['multiple'] ) ? 'multiple' : '';
 
 		echo $this->field_before( $args );
-		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-select" %3$s>', $name, $args['id'],
+		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-select" %3$s style="width:200px">', $name, $args['id'],
             $multiple );
 		foreach ( $args['options'] as $key => $option ) {
 			$selected = ( $value == $key ) ? ' selected="selected"' : '';
