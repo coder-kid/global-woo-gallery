@@ -56,7 +56,7 @@
 			var tabLength = ($('.gwpg-metabox-tab').length) - 1,
 				$cl       = (window.location.hash);
 
-			if( ($('.gwpg-metabox-tab.active').next().length === 0) ) {
+			if( ($('.gwpg-metabox-tab.active').next().length === 0) || $cl == '#!gwpg-metabox-tab-gopro' ) {
 				$('.gwpg-metabox-next-tab').hide();
 				$('.gwpg-metabox-save-config').css('display', 'inline-block');
 			}
