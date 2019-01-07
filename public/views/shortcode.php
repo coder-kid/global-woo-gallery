@@ -32,13 +32,10 @@ if( ! function_exists( 'gwpg_gallery_shortcodes' ) ) {
             <?php endif; ?>
 
             <?php
-                // if($mode == 'list'):
-                    // include GWPG_PLUGIN_PATH . '/includes/blocks/block-product-list.php';
-                // elseif ($mode == 'express-grid'):
-                    // include GWPG_PLUGIN_PATH . '/includes/blocks/block-product-express-grid.php';
-                // else:
+                if($mode == 'list')
+                    include('blocks/block-product-list.php');
+                else
                     include('blocks/block-product-grid.php');
-                // endif;
             ?>
 
         </div>

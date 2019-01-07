@@ -6,8 +6,8 @@ if( $number_of_products > 0 ) {
     $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
 
     ?>
-    <div class="gwpg-product-list row">
-        <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_grid_widget woocommerce">'));
+    <div class="gwpg-product-grid">
+        <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_grid_widget woocommerce row">'));
 
 
         while ($products->have_posts()):
@@ -15,14 +15,14 @@ if( $number_of_products > 0 ) {
             ?>
             <li <?php post_class('col-sm-4'); ?> >
                 <div class="product-wrap-pl" data-mh="gwpg-product-grid">
-                    <span class="gwpg-product-list-left">
-                        <span class="gwpg-product-list-thumb">
+                    <span class="gwpg-product-grid-left">
+                        <span class="gwpg-product-grid-thumb">
                             <?php GWPG_Helper::get_block('product-thumb', true, false); ?>
                         </span>
                     </span>
 
-                    <span class="gwpg-product-list-right">
-                        <span class="gwpg-product-list-desc">
+                    <span class="gwpg-product-grid-right">
+                        <span class="gwpg-product-grid-desc">
                             <?php GWPG_Helper::get_block('product-add-to-cart', true, false); ?>
                         </span>
                     </span>
