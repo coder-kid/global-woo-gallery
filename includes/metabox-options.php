@@ -20,67 +20,6 @@ $options[]    = array(
 			'default' => 'grid'
 		],
 		[
-			'id'      => 'gwpg_product_theme',
-			'name'   => __( 'Select Theme', 'global-woo-gallery' ),
-			'type'    => 'select',
-			'desc'    => __( 'Select which theme you want to display.', 'global-woo-gallery' ),
-			'options' => [
-				'theme_one'   => __( 'Theme One', 'global-woo-gallery' ),
-				'theme_two'   => __( 'Theme Two', 'global-woo-gallery' ),
-				'theme_three' => __( 'Theme Three', 'global-woo-gallery' ),
-			],
-			'default' => 'theme_one'
-		],
-		[
-			'id'      => 'gwpg_products_from',
-			'name'    => __( 'Products From', 'global-woo-gallery' ),
-			'type'    => 'select',
-			'desc'    => __( 'Select an option to show the product from.', 'global-woo-gallery' ),
-			'options' => [
-				'latest'	=> __( 'Latest', 'global-woo-gallery' ),
-				'featured'	=> __( 'Featured', 'global-woo-gallery' ),
-				'Category'	=> __( 'Category', 'global-woo-gallery' ),
-			]
-		],
-		[
-			'id'    => 'gwpg_products_column',
-			'name'  => __( 'Number Of Column', 'global-woo-gallery' ),
-			'type'  => 'slider',
-			'atts'	=> [
-				'min'    => 1,
-				'max'    => 6,
-				'step'   => 1,
-			],
-			'desc'  => __( 'Set number of column for the screen larger than 1100px.', 'global-woo-gallery' ),
-			'default' => '3'
-		],
-		[
-			'id'   => 'gwpg_products_column_on_desktop',
-			'name' => __( 'Number Of Column On Desktop', 'global-woo-gallery' ),
-			'type' => 'number',
-			'atts' => [
-				'min'	=> 1,
-				'step'	=> 1,
-				'max'	=> 6
-			],
-			'desc'    => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'global-woo-gallery' ),
-			'default' => '3'
-		],
-		[
-			'id'    => 'gwpg_products_column_on_tablet',
-			'name'  => __( 'Number Of Column On Tablet', 'global-woo-gallery' ),
-			'type'  => 'number',
-			'desc'  => __( 'Set number of column on tablet for the screen smaller than 990px.', 'global-woo-gallery' ),
-			'default' => '2'
-		],
-		[
-			'id'    => 'gwpg_products_column_on_mobile',
-			'name'  => __( 'Number Of Column On Mobile', 'global-woo-gallery' ),
-			'type'  => 'number',
-			'desc'  => __( 'Set number of column on mobile for the screen smaller than 650px.', 'global-woo-gallery' ),
-			'default' => '1'
-		],
-		[
 			'id'    => 'gwpg_total_products',
 			'name'  => __( 'Total Products', 'global-woo-gallery' ),
 			'type'  => 'number',
@@ -119,36 +58,78 @@ $options[]    = array(
 	'name'          => 'gallery',
 	'title'         => 'Gallery',
 	'section_title' => 'Gallery Settings',
-	'fields'    => array(
-		array(
-			'id'    => 'gallery_first_option',
-			'type'  => 'text',
-			'name' => 'First Option',
-		),
-		array(
-			'id'    => 'gallery_second_option',
-			'type'  => 'text',
-			'name' => 'Secondary Option',
-		),
-	)
+	'fields'        => [
+		[
+			'id'      => 'gwpg_product_theme',
+			'name'   => __( 'Select Theme', 'global-woo-gallery' ),
+			'type'    => 'select',
+			'desc'    => __( 'Select which theme you want to display.', 'global-woo-gallery' ),
+			'options' => [
+				'theme_one'   => __( 'Theme One', 'global-woo-gallery' ),
+				'theme_two'   => __( 'Theme Two', 'global-woo-gallery' ),
+				'theme_three' => __( 'Theme Three', 'global-woo-gallery' ),
+			],
+			'default' => 'theme_one'
+		],
+		[
+			'id'      => 'gwpg_products_from',
+			'name'    => __( 'Products From', 'global-woo-gallery' ),
+			'type'    => 'select',
+			'desc'    => __( 'Select an option to show the product from.', 'global-woo-gallery' ),
+			'options' => [
+				'latest'	=> __( 'Latest', 'global-woo-gallery' ),
+				'featured'	=> __( 'Featured', 'global-woo-gallery' ),
+				'Category'	=> __( 'Category', 'global-woo-gallery' ),
+			]
+		],
+		[
+			'id'    => 'gwpg_products_column',
+			'name'  => __( 'Number Of Column', 'global-woo-gallery' ),
+			'type' => 'number',
+			'atts' => [
+				'min'	=> 1,
+				'step'	=> 1,
+				'max'	=> 6
+			],
+			'desc'    => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'global-woo-gallery' ),
+			'default' => '3'
+		],
+		[
+			'id'   => 'gwpg_products_column_on_desktop',
+			'name' => __( 'Number Of Column On Desktop', 'global-woo-gallery' ),
+			'type' => 'number',
+			'atts' => [
+				'min'	=> 1,
+				'step'	=> 1,
+				'max'	=> 6
+			],
+			'desc'    => __( 'Set number of column on desktop for the screen smaller than 1100px.', 'global-woo-gallery' ),
+			'default' => '3'
+		],
+		[
+			'id'    => 'gwpg_products_column_on_tablet',
+			'name'  => __( 'Number Of Column On Tablet', 'global-woo-gallery' ),
+			'type'  => 'number',
+			'desc'  => __( 'Set number of column on tablet for the screen smaller than 990px.', 'global-woo-gallery' ),
+			'default' => '2'
+		],
+		[
+			'id'    => 'gwpg_products_column_on_mobile',
+			'name'  => __( 'Number Of Column On Mobile', 'global-woo-gallery' ),
+			'type'  => 'number',
+			'desc'  => __( 'Set number of column on mobile for the screen smaller than 650px.', 'global-woo-gallery' ),
+			'default' => '1'
+		],
+	]
 );
 
 $options[]    = array(
 	'name'          => 'style',
 	'title'         => 'Style',
 	'section_title' => 'Gallery Stylizations',
-	'fields'        => array(
-		array(
-			'id'    => 'style_first_option',
-			'type'  => 'text',
-			'name' => 'First Option',
-		),
-		array(
-			'id'    => 'style_second_option',
-			'type'  => 'text',
-			'name' => 'Secondary Option',
-		),
-	)
+	'fields'        => [
+		
+	]
 );
 
 $options[]    = array(

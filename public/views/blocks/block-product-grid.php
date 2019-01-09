@@ -13,7 +13,7 @@ if( $number_of_products > 0 ) {
         while ($products->have_posts()):
             $products->the_post();
             ?>
-            <li <?php post_class('col-sm-4'); ?> >
+            <li <?php post_class('col-sm-2'); ?> >
                 <div class="product-wrap-pl" data-mh="gwpg-product-grid">
                     <span class="gwpg-product-grid-left">
                         <span class="gwpg-product-grid-thumb">

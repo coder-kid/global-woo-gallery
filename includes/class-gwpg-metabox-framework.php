@@ -194,7 +194,7 @@ class GWPG_Metabox_Framework {
                     <div class="gwpg-metabox-tab-navigation">
                         <a href="javascript:void(0)" class="gwpg-metabox-next-tab" style="display: inline-block;"><?php echo _e('Next', 'global-woo-gallery'); ?><span class="dashicons dashicons-arrow-right-alt"></span></a>
 
-                        <a href="javascript:void(0)" class="gwpg-metabox-save-config" data-saving="Saving..." style="display: none;"><?php _('Save', 'global-woo-gallery'); ?></a>
+                        <a href="javascript:void(0)" class="gwpg-metabox-save-config" data-saving="Saving..." style="display: none;"><?php _e('Save', 'global-woo-gallery'); ?></a>
                     </div>
                 </div><!-- /.gwpg-metabox-tabs-footer -->
 

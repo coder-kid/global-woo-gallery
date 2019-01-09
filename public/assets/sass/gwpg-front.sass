@@ -1,6 +1,109 @@
 @import 'partials/grid'
+a
+    display: block;
 
 .gwpg_product_grid_widget
     margin: 0;
     padding: 0;
     list-style: none;
+    li
+        text-align: center;
+        margin-bottom: 30px;
+
+.gwpg-product-list
+    li 
+        .gwpg-product-list-thumb
+            position: relative;
+
+.gwpg-product-list
+    img
+        width: 100%;
+
+.gwpg-product-list
+    li
+        .gwpg-product-list-thumb
+            span.onsale
+                position: absolute;
+                top: 0;
+                left: 0;
+                border: none;
+                border-radius: 0;
+                background-color: #e43f0b;
+                color: #ffffff;
+                padding: 10px 15px;
+                font-size: .875em;
+                line-height: 1;
+                min-height: 12px;
+                text-transform: uppercase;
+                font-weight: 600;
+                display: inline-block;
+                margin-bottom: 1em;
+
+.gwpg-product-list-thumb,
+.gwpg-product-list-desc
+    color: #607d8b;
+    display: block;
+
+.gwpg-product-list-desc
+    margin: 10px 0 20px 0;
+
+.woocommerce .gwpg-product-list-desc .star-rating::before,
+.woocommerce .gwpg-product-list-desc .star-rating span::before
+    left: 0;
+    right: 0;
+    width: 100%;
+
+
+.gwpg-product-list-left,
+.gwpg-product-list-right
+    padding-left: 0;
+
+.woocommerce
+    .gwpg-product-list-add-to-cart
+        a.button
+            color: #7d7d7d;
+            background: #e8e8e8;
+            padding: 9px 18px;
+            border: none;
+            border-radius: 0;
+            display: inline-block;
+
+.woocommerce
+    .gwpg-product-list-add-to-cart
+        a.button:hover
+            background-color: #3e3e3e;
+            color: #ffffff;
+
+
+.gwpg-product-list-title, 
+.gwpg-product-list-add-to-cart, 
+.gwpg-product-list-desc
+    .star-rating
+        display: block;
+        width: 100%;
+
+.gwpg-product-list-add-to-cart, 
+.gwpg-product-list-desc
+    .star-rating
+        margin: 10px 0 5px 0;
+
+
+.gwpg-product-list-desc
+    .star-rating
+        margin: 0 auto .5407911001em;
+
+
+.gwpg-product-list-title
+    h2
+        font-size: 18px;
+        padding: 0;
+        margin: 0px 0 10px 0;
+
+.gwpg-category-desc
+    .gwpg-category-title
+        font-size: 24px;
+        padding: 0;
+        margin: 10px 0 10px 0;
+
+.star-rating
+    margin: 0 auto;
