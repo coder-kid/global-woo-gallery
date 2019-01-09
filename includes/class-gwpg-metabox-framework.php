@@ -137,6 +137,43 @@ class GWPG_Metabox_Framework {
         ?>
 
             <div class="gwpg-row">
+                    <div class="gwpg-mbf text-center">
+
+                        <div class="gwpg-col">
+                            <div class="gwpg-mbf-shortcode">
+                                <h2 class="gwpg-mbf-shortcode-title"><?php _e( 'Shortcode', 'woo-product-slider' ); ?> </h2>
+                                <div class="gwpg-mbf-shortocode-board">
+                                    <p><?php _e( 'Copy and paste this shortcode into your posts or pages:', 'woo-product-slider' );
+                                        global $post;
+                                        ?></p>
+                                    <div class="spsc-code selectable">[woo_product_slider <?php
+                                        echo 'id="' . $post->ID . '"'; ?>]</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="gwpg-col">
+                            <div class="gwpg-mbf-shortcode">
+                                <h2 class="gwpg-mbf-shortcode-title"><?php _e( 'Template Include', 'woo-product-slider' ); ?> </h2>
+
+                                <div class="gwpg-mbf-shortocode-board">
+                                    <p><?php _e( 'Paste the PHP code into your template file:', 'woo-product-slider' ); ?></p>
+
+                                    <div class="spsc-code selectable">
+                                        &lt;?php
+                                        do_shortocode('[woo_product_slider <?php
+                                        echo 'id="' . $post->ID . '"'; ?>]');
+                                        ?&gt;</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+
+            <div class="gwpg-row">
 
                 <div class="gwpg-metabox-tabs-wrap">
 
@@ -224,6 +261,8 @@ class GWPG_Metabox_Framework {
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
         }
+
+        update_post_meta($post_id, 'gwpg_meta_values', serialize($_POST['gwpg_meta_box']));
         
         foreach ( $_POST['gwpg_meta_box'] as $key => $meta_value ) {
 

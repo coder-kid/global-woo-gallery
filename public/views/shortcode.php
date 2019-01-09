@@ -22,6 +22,8 @@ if( ! function_exists( 'gwpg_gallery_shortcodes' ) ) {
         $orderby            = !empty($orderby) ? esc_attr($orderby) : 'date';
         $order              = !empty($order) ? esc_attr($order) : 'desc';
 
+        
+
         ob_start();
         ?>
         <div class="gwpg-products-gallery-shortcode">

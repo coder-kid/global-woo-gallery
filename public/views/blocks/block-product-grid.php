@@ -2,7 +2,6 @@
 
 if( $number_of_products > 0 ) {
 
-
     $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
 
     ?>
