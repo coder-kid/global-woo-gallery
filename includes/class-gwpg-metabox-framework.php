@@ -141,13 +141,13 @@ class GWPG_Metabox_Framework {
 
                         <div class="gwpg-col">
                             <div class="gwpg-mbf-shortcode">
-                                <h2 class="gwpg-mbf-shortcode-title"><?php _e( 'Shortcode', 'woo-product-slider' ); ?> </h2>
+                                <h2 class="gwpg-mbf-shortcode-title"><img class="meta-title-icon" src="<?php echo GWPG_PLUGIN_URI . 'admin/assets/images/icons/block-cta.svg'; ?>" alt=""><?php _e( 'Shortcode', 'global-woo-gallery' ); ?> </h2>
                                 <div class="gwpg-mbf-shortocode-board">
-                                    <p><?php _e( 'Copy and paste this shortcode into your posts or pages:', 'woo-product-slider' );
+                                    <p><?php _e( 'Copy and paste this shortcode into your posts or pages:', 'global-woo-gallery' );
                                         global $post;
                                         ?></p>
-                                    <div class="spsc-code selectable">[woo_product_slider <?php
-                                        echo 'id="' . $post->ID . '"'; ?>]</div>
+                                    <div class="gwpg-shortcode-code selectable text-center"><pre>[gwpg-gallery <?php
+                                        echo 'id="' . $post->ID . '"'; ?>]</pre></div>
                                 </div>
 
                             </div>
@@ -155,16 +155,31 @@ class GWPG_Metabox_Framework {
 
                         <div class="gwpg-col">
                             <div class="gwpg-mbf-shortcode">
-                                <h2 class="gwpg-mbf-shortcode-title"><?php _e( 'Template Include', 'woo-product-slider' ); ?> </h2>
+                                <h2 class="gwpg-mbf-shortcode-title"><img class="meta-title-icon" src="<?php echo GWPG_PLUGIN_URI . 'admin/assets/images/icons/block-cta.svg'; ?>" alt=""><?php _e( 'Template Include', 'global-woo-gallery' ); ?> </h2>
 
                                 <div class="gwpg-mbf-shortocode-board">
-                                    <p><?php _e( 'Paste the PHP code into your template file:', 'woo-product-slider' ); ?></p>
+                                    <p><?php _e( 'Paste the PHP code into your template file:', 'global-woo-gallery' ); ?></p>
 
-                                    <div class="spsc-code selectable">
-                                        &lt;?php
-                                        do_shortocode('[woo_product_slider <?php
-                                        echo 'id="' . $post->ID . '"'; ?>]');
-                                        ?&gt;</div>
+                                    <div class="gwpg-shortcode-code selectable">
+                                        <pre>&lt;?php do_shortocode(
+    '[gwpg-gallery <?php echo 'id="' . $post->ID . '"'; ?>]'
+); ?&gt;
+                                        </pre>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="gwpg-col">
+                            <div class="gwpg-mbf-shortcode">
+                                <h2 class="gwpg-mbf-shortcode-title"><img class="meta-title-icon" src="<?php echo GWPG_PLUGIN_URI . 'admin/assets/images/icons/block-cta.svg'; ?>" alt=""><?php _e( 'Post or Page editor', 'global-woo-gallery' ); ?> </h2>
+
+                                <div class="gwpg-mbf-shortocode-board">
+                                    <p><?php _e( 'Insert it into an existing post or page with the icon:', 'global-woo-gallery' ); ?></p>
+
+                                    <div class="gwpg-shortcode-code selectable">
+                                    <img src="<?php echo GWPG_PLUGIN_URI . 'admin/assets/images/tiny-mce.png'; ?>" alt=""></div>
                                 </div>
 
                             </div>

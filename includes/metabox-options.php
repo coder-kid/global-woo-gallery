@@ -20,11 +20,12 @@ $options[]    = array(
 			'default' => 'grid'
 		],
 		[
-			'id'    => 'gwpg_total_products',
-			'name'  => __( 'Total Products', 'global-woo-gallery' ),
-			'type'  => 'number',
-			'desc'  => __( 'Number of Total products to show.', 'global-woo-gallery' ),
-			'default' => '50'
+			'id'         => 'gwpg_total_products',
+			'name'       => __( 'Total Products', 'global-woo-gallery' ),
+			'type'       => 'number',
+			'desc'       => __( 'Number of Total products to show.', 'global-woo-gallery' ),
+			'default'    => '50',
+			'dependency' => ['gwpg_products_template', '==', 'list' ]
 		],
 		[
 			'id'      => 'gwpg_products_orderby',

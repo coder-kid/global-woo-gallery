@@ -22,7 +22,9 @@ if( ! function_exists( 'gwpg_gallery_shortcodes' ) ) {
         $orderby            = !empty($orderby) ? esc_attr($orderby) : 'date';
         $order              = !empty($order) ? esc_attr($order) : 'desc';
 
-        
+
+        $post_id = ! empty($atts['id']) ? $atts['id'] : '';
+        $meta_data = unserialize(get_post_meta($post_id, 'gwpg_meta_values', true));
 
         ob_start();
         ?>

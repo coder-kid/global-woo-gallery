@@ -268,8 +268,19 @@ class GWPG_Controls_Manager {
      * @return html
      */
     private function field_before( array $args ) {
-        $table = '';
-		$table .= sprintf( '<div class="gwpg-metabox-element gwpg-metabox-input-group" id="field-%s">', $args['id'] );
+		$table = '';
+		
+		$hidden = '';
+		$depend = '';
+
+		if ( isset( $args['dependency'] ) ) {
+			$hidden  = ' hidden';
+			$depend .= ' data-controller="'. $args['dependency'][0] .'"';
+			$depend .= ' data-condition="'. $args['dependency'][1] .'"';
+			$depend .= ' data-value="'. $args['dependency'][2] .'"';
+		}
+
+		$table .= sprintf( '<div class="gwpg-metabox-element gwpg-metabox-input-group%2$s" id="field-%1$s" %3$s>', $args['id'], $hidden, $depend);
 		$table .= sprintf( '<div class="gwpg-metabox-input-label">' );
 		$table .= sprintf( '<label for="%1$s">%2$s</label>', $args['id'], $args['name'] );
 		if ( ! empty( $args['desc'] ) ) {
