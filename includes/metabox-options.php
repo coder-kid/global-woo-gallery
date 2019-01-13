@@ -144,9 +144,10 @@ $options[]    = array(
 			'name' => 'First Option',
 		),
 		array(
-			'id'    => 'typography_second_option',
-			'type'  => 'text',
+			'id'   => 'typography_second_option',
+			'type' => 'text',
 			'name' => 'Secondary Option',
+			'dependency'	=> [ 'typography_first_option', '!=', '' ]
 		),
 	)
 );

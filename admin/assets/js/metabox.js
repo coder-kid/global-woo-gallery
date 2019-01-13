@@ -17,6 +17,7 @@
          */
         _init: function() {
             GWPG_MBT._initTabs();
+            GWPG_MBT._dependency_handle();
         },
 
         /**
@@ -92,6 +93,78 @@
 
             });
 
+        },
+
+        /**
+         * Handle dependency of metabox fields.
+         * 
+         * @access private
+         * @method	_dependency_handle
+         */
+        _dependency_handle: function() {
+            var $fields = $('.gwpg-metabox-element');
+            $fields.each( function(i, f) {
+
+                var c, cd, v;
+                if( $(f).hasClass('hidden') == true) {
+                    c  = $(f).data('controller'),
+                    cd = $(f).data('condition'),
+                    v  = $(f).data('value');
+
+
+                    var $this = $(this),
+                        h     = $('#field-'+c),
+                        ft    = h.data('field-type'),
+                        ft    = GWPG_MBT._get_field_type(ft),
+                        t     = h.find(ft);
+
+                    $(t).on('change keydown keyup', function() {
+                        var d = $(this).val(),
+                            r = GWPG_MBT._get_condition(d, v, cd);
+
+                        if(r) {
+                            $this.removeClass('hidden');
+                        }else {
+                            $this.addClass('hidden');
+                        }
+                    });
+                }
+
+            });
+        },
+
+        _get_condition: function(a, b, c) {
+            switch(c) {
+                case '==':
+                    return a === b;
+                    break;
+                case '<':
+                    return a < b;
+                    break;
+                case '>':
+                    return a < b;
+                    break;
+                case '!=':
+                    return a !== b;
+                    break;
+            }
+        },
+
+        _get_field_type: function(f) {
+            switch(f) {
+                case 'select':
+                    return 'select';
+                    break;
+                case 'text':
+                    return 'input';
+                    break;
+                case 'number':
+                    return 'input';
+                    break;
+                case 'textarea':
+                    return 'textarea';
+                    break;
+            }
         }
 
     };
