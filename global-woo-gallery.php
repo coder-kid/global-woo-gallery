@@ -54,7 +54,9 @@ if( ! class_exists('Global_Woo_Gallery') ) {
         public function __construct() {
             $this->define_constants();
             $this->includes();
-			$this->instantiate();
+            $this->instantiate();
+            
+            GWPG_Helper::total_categories();
         }
 
         /**
@@ -116,4 +118,12 @@ if( ! class_exists('Global_Woo_Gallery') ) {
 
     add_action( 'plugins_loaded', 'run_global_woo_gallery', 25 );
 
+}
+
+function dump($data, $or = true) {
+    if( $or == true ) {
+        echo '<pre>', print_r($data), '</pre>';
+    }else {
+        echo '<pre>', var_dump($data), '</pre>';
+    }
 }

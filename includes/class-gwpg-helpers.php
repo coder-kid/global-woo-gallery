@@ -12,6 +12,21 @@ if( ! class_exists('GWPG_Helper') ) {
             add_action('wp_loaded', [$this, 'gwpg_woocommerce_template_loop_hooks']);
         }
 
+        public static function total_categories() {
+            $args = array(
+                'taxonomy'   => "product_cat",
+                // 'number'     => $number,
+                // 'orderby'    => $orderby,
+                // 'order'      => $order,
+                // 'hide_empty' => $hide_empty,
+                // 'include'    => $ids
+            );
+            $product_categories = get_terms($args);
+
+            dump($product_categories, false);
+            
+        }
+
         /**
          * @param $number_of_products
          * @param $category
