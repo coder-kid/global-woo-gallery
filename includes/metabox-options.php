@@ -73,15 +73,34 @@ $options[]    = array(
 			'default' => 'theme_one'
 		],
 		[
-			'id'      => 'gwpg_products_from',
-			'name'    => __( 'Products From', 'global-woo-gallery' ),
-			'type'    => 'select',
-			'desc'    => __( 'Select an option to show the product from.', 'global-woo-gallery' ),
-			'options' => [
-				'latest'	=> __( 'Latest', 'global-woo-gallery' ),
-				'featured'	=> __( 'Featured', 'global-woo-gallery' ),
-				'Category'	=> __( 'Category', 'global-woo-gallery' ),
+			'id'		=> 'gwpg_products_from',
+			'name'		=> __( 'Products From', 'global-woo-gallery' ),
+			'type'		=> 'select',
+			'desc'		=> __( 'Select an option to show the product from.', 'global-woo-gallery' ),
+			'options'	=> [
+				'latest'        => __( 'Latest', 'global-woo-gallery' ),
+				'featured'      => __( 'Featured', 'global-woo-gallery' ),
+				'from_category' => __( 'From Category', 'global-woo-gallery' ),
+				'from_tag'      => __( 'From Tag', 'global-woo-gallery' )
 			]
+		],
+		[
+			'id'		=> 'gwpg_product_from_category',
+			'name'		=> __( 'Product Categories', 'global-woo-gallery' ),
+			'type'		=> 'select',
+			'desc'		=> __( 'Select category for products.', 'global-woo-gallery' ),
+			'options'	=> GWPG_Helper::total_categories(),
+			'multiple'	=> true,
+			'dependency' => ['gwpg_products_from', '==', 'from_category' ]
+		],
+		[
+			'id'		=> 'gwpg_product_from_tag',
+			'name'		=> __( 'Product Tags', 'global-woo-gallery' ),
+			'type'		=> 'select',
+			'desc'		=> __( 'Select tags for products.', 'global-woo-gallery' ),
+			'options'	=> GWPG_Helper::get_all_tags(),
+			'multiple'	=> true,
+			'dependency' => ['gwpg_products_from', '==', 'from_tag' ]
 		],
 		[
 			'id'    => 'gwpg_products_column',

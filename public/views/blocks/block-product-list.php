@@ -1,7 +1,7 @@
 <?php
 if (absint($number_of_products) > 0):
     $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
-
+    var_dump('From list layout');
     ?>
     <div class="gwpg-product-list row">
         <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_list_widget woocommerce">'));

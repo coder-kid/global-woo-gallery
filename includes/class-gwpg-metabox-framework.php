@@ -278,16 +278,6 @@ class GWPG_Metabox_Framework {
         }
 
         update_post_meta($post_id, 'gwpg_meta_values', serialize($_POST['gwpg_meta_box']));
-        
-        foreach ( $_POST['gwpg_meta_box'] as $key => $meta_value ) {
-
-			if ( is_array( $val ) ) {
-				$val = implode( ',', $val );
-			}
-
-			update_post_meta( $post_id, $key, sanitize_text_field( $meta_value ) );
-        }
-
     }
 
 

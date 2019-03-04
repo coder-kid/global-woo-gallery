@@ -89,9 +89,9 @@ if( ! class_exists('Global_Woo_Gallery') ) {
             require_once $this->include_path('class-enqueue-scripts.php');
             require_once $this->include_path('class-controls-manager.php');
             require_once $this->include_path('class-gwpg-metabox-framework.php');
+            require_once $this->include_path('class-gwpg-helpers.php');
             require_once $this->include_path('metabox-options.php');
             require_once $this->include_path('class-loader.php');
-            require_once $this->include_path('class-gwpg-helpers.php');
 
         }
 
@@ -118,12 +118,4 @@ if( ! class_exists('Global_Woo_Gallery') ) {
 
     add_action( 'plugins_loaded', 'run_global_woo_gallery', 25 );
 
-}
-
-function dump($data, $or = true) {
-    if( $or == true ) {
-        echo '<pre>', print_r($data), '</pre>';
-    }else {
-        echo '<pre>', var_dump($data), '</pre>';
-    }
 }
