@@ -1,9 +1,9 @@
 <?php
 
-if( $number_of_products > 0 ) {
+if( $product_data['number_of_products'] > 0 ) {
 
-    $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
-
+    // $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
+    $products = GWPG_Helper::get_products($product_data);
     ?>
     <div class="gwpg-product-grid">
         <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_grid_widget woocommerce row">'));

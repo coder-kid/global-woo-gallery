@@ -118,10 +118,19 @@
                         ft    = GWPG_MBT._get_field_type(ft),
                         t     = h.find(ft);
 
+                        $r = GWPG_MBT._get_condition(t.val(), v, cd);
+
+                    if ($r) {
+                        $(f).removeClass('hidden');
+                    } else {
+                        $(f).addClass('hidden');
+                    }
+
+
                     $(t).on('change keydown keyup', function() {
                         var d = $(this).val(),
                             r = GWPG_MBT._get_condition(d, v, cd);
-
+                            
                         if(r) {
                             $this.removeClass('hidden');
                         }else {

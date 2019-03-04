@@ -154,7 +154,11 @@ class GWPG_Controls_Manager {
 		echo sprintf( '<select name="%1$s" id="%2$s" class="gwpg-metabox-select" %3$s style="width:200px">', $name, $args['id'],
             $multiple );
 		foreach ( $args['options'] as $key => $option ) {
-			$selected = ( $value == $key ) ? ' selected="selected"' : '';
+			if( ! is_array($value) ) {
+				$selected =  ( $value == $key ) ? ' selected="selected"' : '';
+			}else {
+				$selected = in_array($key, $value) ? ' selected="selected"' : '';
+			}
 			echo sprintf( '<option value="%1$s" %3$s>%2$s</option>', $key, $option, $selected );
 		}
 		echo '</select>';
@@ -254,10 +258,10 @@ class GWPG_Controls_Manager {
 
         // Meta value
         $default = isset($args['default']) ? $args['default'] : '';
-        $meta    = get_post_meta( $post->ID, $args['id'], true );
-        $value   = ! empty($meta) ? $meta : $default;
+		$meta    = unserialize(get_post_meta( $post->ID, 'gwpg_meta_values', true ));
+		$value   = isset($meta[$args['id']]) && ! empty($meta) ? $meta[$args['id']] : $default;
+		
         if( $value == 'zero' ) $value = 0;
-
         return [$name, $value, $after];
     }
 
