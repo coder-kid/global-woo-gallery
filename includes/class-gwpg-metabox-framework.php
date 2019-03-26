@@ -57,34 +57,20 @@ class GWPG_Metabox_Framework {
      */
     public $metaboxform;
 
-    /**
-	 *
-	 * instance
-	 * @access private
-	 * @var class
-	 *
-	 */
-    private static $instance = null;
-    
-    // instance
-	public static function instance( $options = array() ) {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self( $options );
-		}
-		return self::$instance;
-    }
-    
-    // runs framework construct
-    public function __construct( $options ) {
-        
+    public function init(array $options) {
         $this->options = apply_filters('gwpg_metabox_framework', $options);
-
+        
         if( ! empty($this->options) ) {
             add_action( 'add_meta_boxes', [$this, 'generate_metaboxes'] );
             $this->sections = $this->get_sections();
             $this->metaboxform = new GWPG_Controls_Manager();
             add_action( 'save_post', [$this, 'save_posts_data'] );
         }
+    }
+    
+    // runs framework construct
+    public function __construct() {
+        
 
     }
 
