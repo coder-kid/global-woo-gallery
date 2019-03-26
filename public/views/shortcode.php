@@ -16,7 +16,8 @@ if( ! function_exists( 'gwpg_gallery_shortcodes' ) ) {
             'theme'              => isset($meta_data['gwpg_product_theme']) ? $meta_data['gwpg_product_theme'] : 'theme_one',
             'column'             => isset($meta_data['gwpg_products_column']) ? $meta_data['gwpg_products_column'] : 3,
             'column_on_tablet'   => isset($meta_data['gwpg_products_column_on_tablet']) ? $meta_data['gwpg_products_column_on_tablet'] : 1,
-            'column_on_mobile'   => isset($meta_data['gwpg_products_column_on_mobile']) ? $meta_data['gwpg_products_column_on_mobile'] : 1
+            'column_on_mobile'   => isset($meta_data['gwpg_products_column_on_mobile']) ? $meta_data['gwpg_products_column_on_mobile'] : 1,
+            'post__in_cats' => ''
         );
 
         if( isset($meta_data['gwpg_products_from']) && $meta_data['gwpg_products_from'] == 'from_category' ) {
@@ -24,23 +25,30 @@ if( ! function_exists( 'gwpg_gallery_shortcodes' ) ) {
         }
 
         if( isset($meta_data['gwpg_products_from']) && $meta_data['gwpg_products_from'] == 'from_tag' ) {
-            $shortcode_args['post__in_tags'] = $meta_data['gwpg_product_from_tag'];
+            $shortcode_args['tag__in'] = $meta_data['gwpg_product_from_tag'];
         }
 
-        dump($shortcode_args);
-
+        if($meta_data['gwpg_products_from'] == 'featured') {
+            $shortcode_args['show'] = 'featured';
+        }elseif($meta_data['gwpg_products_from'] == 'onsale') {
+            $shortcode_args['show'] = 'onsale';
+        }
+        
         $product_data = shortcode_atts($shortcode_args, $atts);
-
-        // dump($product_data);
         
         ob_start();
         ?>
         <div class="gwpg-products-gallery-shortcode">
             <?php
-                if($product_data['template_mode'] == 'list')
-                    include('blocks/block-product-list.php');
-                else
-                    include('blocks/block-product-grid.php');
+                // dump($product_data);
+                $products = GWPG_Helper::get_products($product_data);
+                dump($products->posts);
+
+
+                // if($product_data['template_mode'] == 'list')
+                //     include('blocks/block-product-list.php');
+                // else
+                //     include('blocks/block-product-grid.php');
             ?>
 
         </div>

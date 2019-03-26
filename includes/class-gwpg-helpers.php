@@ -7,51 +7,65 @@ if ( ! defined( 'ABSPATH' ) ) {
 if( ! class_exists('GWPG_Helper') ) {
     class GWPG_Helper {
 
-
         public function __construct() {
-            $this->get_all_tags();
             add_action('wp_loaded', [$this, 'gwpg_woocommerce_template_loop_hooks']);
         }
 
-        public static function total_categories() {
+        /**
+         * Return all WC categories
+         *
+         * @since 3.0.0
+         *
+         * @param $args
+         *
+         * @return array|int|\WP_Error
+         */
+        public static function gwpg_get_wc_categories( $args = [] ) {
+            global $wp_version;
 
-           $term_args = array(
-               'taxonomy'               => 'product_type',
-               'hide_empty'             => false,
-               'fields'                 => 'all',
-               'count'                  => true,
-           );
+            $default = [
+                'number'     => '20',
+                'orderby'    => 'name',
+                'order'      => 'ASC',
+                'hide_empty' => false,
+                'include'    => [],
+                'exclude'    => [],
+                'child_of'   => 0,
+            ];
 
-           $term_query = new WP_Term_Query( $term_args );
-           $all_terms = array();
+            if ( version_compare( $wp_version, '4.5.0', '<' ) ) {
+                $args  = wp_parse_args( $args, $default );
+                $terms = get_terms( 'product_cat', $args );
+            } else {
+                $args       = wp_parse_args( $args, $default );
+                $args['taxonomy'] = 'product_cat';
+                $terms      = get_terms( $args );
+            }
 
-           if( isset($term_query->terms) &&  count($term_query->terms) > 0 ) {
-               foreach($term_query->terms as $term) {
-                   $all_terms[$term->term_id] = ucfirst($term->name);
-               }
-           }
+            $categories = [];
+            if(is_array($terms)) {
+                foreach($terms as $cat) {
+                    $categories[$cat->term_id] = $cat->name;
+                }
+            }
 
-           return $all_terms;
-
+            return $categories;
         }
 
         public static function get_all_tags() {
             $term_args = array(
-               'taxonomy'               => 'product_tag',
-               'hide_empty'             => false,
-               'fields'                 => 'all',
-               'count'                  => true,
-           );
-
+                'taxonomy'               => 'product_tag',
+                'hide_empty'             => false,
+                'fields'                 => 'all',
+                'count'                  => true,
+            );
             $all_terms = array();
-
             $term_query = new WP_Term_Query( $term_args );
             if( isset($term_query->terms) &&  count($term_query->terms) > 0 ) {
                 foreach($term_query->terms as $term) {
                     $all_terms[$term->term_id] = ucfirst($term->name);
                 }
             }
-
             return $all_terms;
         }
 
@@ -67,9 +81,6 @@ if( ! class_exists('GWPG_Helper') ) {
 
             if( ! class_exists('WooCommerce') ) return;
 
-            // dump($data); 
-
-
             extract($data);
             $product_visibility_term_ids = wc_get_product_visibility_term_ids();
 
@@ -80,21 +91,30 @@ if( ! class_exists('GWPG_Helper') ) {
                 'no_found_rows'  => 1,
                 'orderby'       => $orderby,
                 'order'          => $order,
-                
                 'meta_query'     => array(),
                 'tax_query'      => array(
                     'relation' => 'AND'
                 )
             );
 
-            // if (absint($gwpg_product_from_category) > 0) {
-            //     $query_args['tax_query'][] = array(
-            //         'taxonomy' => 'product_cat',
-            //         'field'    => 'term_taxonomy_id',
-            //         'terms'    => $gwpg_product_from_category
-            //     );
-    
-            // }
+            if (absint($post__in_cats) > 0) {
+                $query_args['tax_query'][] = array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_taxonomy_id',
+                    'terms'    => $post__in_cats
+                );
+            }
+
+            if (absint($tag__in) > 0) {
+                $query_args['tax_query'][] = array(
+                    'taxonomy' => 'product_tag',
+                    'field'    => 'term_taxonomy_id',
+                    'terms'    => $tag__in
+                );
+
+                // $query_args['tag__in'] = $tag__in;
+            }
+
 
             // switch ($show) {
             //     case 'featured' :
@@ -171,6 +191,4 @@ if( ! class_exists('GWPG_Helper') ) {
 
 
     }
-
-    new GWPG_Helper;
 }

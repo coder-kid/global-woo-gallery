@@ -55,8 +55,6 @@ if( ! class_exists('Global_Woo_Gallery') ) {
             $this->define_constants();
             $this->includes();
             $this->instantiate();
-            
-            GWPG_Helper::total_categories();
         }
 
         /**
