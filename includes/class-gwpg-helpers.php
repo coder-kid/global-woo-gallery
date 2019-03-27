@@ -82,56 +82,63 @@ if( ! class_exists('GWPG_Helper') ) {
             if( ! class_exists('WooCommerce') ) return;
 
             extract($data);
+
+
+            if($products_from == 'onsale') {
+                $show = 'onsale';
+            }elseif($products_from == 'featured') {
+                $show = 'featured';
+            }
+
             $product_visibility_term_ids = wc_get_product_visibility_term_ids();
 
-            $query_args = array(
-                'posts_per_page' => $number_of_products,
+            $query_args = [
+                'posts_per_page' => $total_products,
                 'post_status'    => 'publish',
                 'post_type'      => 'product',
                 'no_found_rows'  => 1,
-                'orderby'       => $orderby,
-                'order'          => $order,
-                'meta_query'     => array(),
-                'tax_query'      => array(
-                    'relation' => 'AND'
-                )
-            );
+                'orderby'       => $products_orderby,
+                'order'          => $products_order,
+                'meta_query'     => [],
+                'tax_query'      => ['relation' => 'AND']
+            ];
 
-            if (absint($post__in_cats) > 0) {
+            if ($products_from == 'from_category' && absint($product_from_category) > 0) {
                 $query_args['tax_query'][] = array(
                     'taxonomy' => 'product_cat',
                     'field'    => 'term_taxonomy_id',
-                    'terms'    => $post__in_cats
+                    'terms'    => $product_from_category
                 );
             }
 
-            if (absint($tag__in) > 0) {
+            if ( $products_from == 'from_tag' && absint($product_from_tag) > 0) {
                 $query_args['tax_query'][] = array(
                     'taxonomy' => 'product_tag',
                     'field'    => 'term_taxonomy_id',
-                    'terms'    => $tag__in
+                    'terms'    => $product_from_tag
                 );
-
-                // $query_args['tag__in'] = $tag__in;
             }
 
 
-            // switch ($show) {
-            //     case 'featured' :
-            //         $query_args['tax_query'][] = array(
-            //             'taxonomy' => 'product_visibility',
-            //             'field'    => 'term_taxonomy_id',
-            //             'terms'    => $product_visibility_term_ids['featured'],
-            //         );
-            //         break;
-            //     case 'onsale' :
-            //         $product_ids_on_sale = wc_get_product_ids_on_sale();
-            //         $product_ids_on_sale[] = 0;
-            //         $query_args['post__in'] = $product_ids_on_sale;
-            //         break;
-            // }
+            if($show) {
+                switch ($show) {
+                    case 'featured' :
+                        $query_args['tax_query'][] = array(
+                            'taxonomy' => 'product_visibility',
+                            'field'    => 'term_taxonomy_id',
+                            'terms'    => $product_visibility_term_ids['featured'],
+                        );
+                        break;
+                    case 'onsale' :
+                        $product_ids_on_sale = wc_get_product_ids_on_sale();
+                        $product_ids_on_sale[] = 0;
+                        $query_args['post__in'] = $product_ids_on_sale;
+                        break;
+                }
+            }
+            
 
-            switch ($orderby) {
+            switch ($products_orderby) {
                 case 'price' :
                     $query_args['meta_key'] = '_price';
                     $query_args['orderby'] = 'meta_value_num';
@@ -147,7 +154,7 @@ if( ! class_exists('GWPG_Helper') ) {
                     $query_args['orderby'] = 'date';
             }
 
-            return new WP_Query(apply_filters('aftwpl_widget_query_args', $query_args));
+            return new WP_Query(apply_filters('gwpg_widget_query_args', $query_args));
 
         }
 
