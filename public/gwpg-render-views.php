@@ -28,27 +28,40 @@ if( ! class_exists('GWPG_Shortcode') ) {
 
         protected function blend_thumbnails($product) {
             $attachments = [];
-            $attachments['ids'] = [get_post_thumbnail_id(get_the_ID())];
-            // if($product->get_gallery_image_ids()) {
-            //     $attachments['ids'] = array_merge($attachments['ids'], $product->get_gallery_image_ids());
-            // }
-
-            dump($attachments);
-
-            // $product_img_size = apply_filters( 'gwgp_product_image_size', 'full' );
-            // $image = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), $product_img_size );
+            if($product->get_gallery_image_ids()) {
+                $attachments['ids'] = array_filter(array_merge([get_post_thumbnail_id(get_the_ID())], $product->get_gallery_image_ids()), 'strlen');
+            }
+            if(isset($attachments['ids'])) {
+                foreach($attachments['ids'] as $id) {
+                    $attachments['urls'][] = wp_get_attachment_image_src($id, apply_filters( 'gwpg_product_image_size', 'medium' ));
+                }
+            }
+            return $attachments;
         }
+
+        protected function gwpg_get_images($product) {
+            if($this->blend_thumbnails($product)) {
+                foreach($this->blend_thumbnails($product)['urls'] as $url) {
+                    printf('<img src="%s" alt="%s" />', $url[0], esc_attr(get_the_title()));
+                }
+            }
+        }
+
+
 
         protected function render_gwpg_product_thumb($products, $product) {
             ob_start();
             ?>
-            <a href="<?php echo esc_url(get_the_permalink()); ?>">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="gwpg-product-thumbnails">
                 <?php
-                    if( has_post_thumbnail($products->post->ID) ) {
-                        $this->blend_thumbnails($product);
-                    }else { ?>
-                        <img id="place_holder_thm" src="<?php echo wc_placeholder_img_src(); ?>" alt="Placeholder" />
-                    <?php }
+                    if( !has_post_thumbnail($products->post->ID) ) {
+                        printf('<img id="place_holder_thm" src="%s" alt="Placeholder" />',wc_placeholder_img_src());
+                    }
+                    if(empty($this->blend_thumbnails($product))) {
+                        the_post_thumbnail();
+                    }else {
+                        $this->gwpg_get_images($product);
+                    }
                 ?>
             </a>
             <?php
