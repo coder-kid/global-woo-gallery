@@ -34,7 +34,8 @@ class GWPG_Scripts {
 
     public function __construct() {
         add_action( 'admin_enqueue_scripts', [$this, 'addmin_enqueue_style'] );
-        add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
+		add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
+		add_action( 'wp_enqueue_scripts', [$this, 'gwpg_frontend_style'] );
     }
 
     public function admin_enqueue_scripts() {
@@ -69,7 +70,15 @@ class GWPG_Scripts {
             GWPG_PLUGIN_URI . 'admin/assets/css/gwpg.min.css',[],
             GWPG_VERSION
         );
-    }
+	}
+	
+	public function gwpg_frontend_style() {
+		wp_enqueue_style(
+			'gwpg-frontend',
+			GWPG_PLUGIN_URI . 'public/assets/css/gwpg-front.min.css',[],
+			GWPG_VERSION
+		);
+	}
 
 
 }
