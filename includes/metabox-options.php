@@ -82,8 +82,7 @@ function gwpg_generate_metabox() {
 				'type'		=> 'select',
 				'desc'		=> __( 'Select an option to show the product from.', 'global-woo-gallery' ),
 				'options'	=> [
-					'any'           => __( 'Latest', 'global-woo-gallery' ),
-					'onsale'        => __( 'Onsale', 'global-woo-gallery' ),
+					'onsale'        => __( 'Latest', 'global-woo-gallery' ),
 					'featured'      => __( 'Featured', 'global-woo-gallery' ),
 					'from_category' => __( 'From Category', 'global-woo-gallery' ),
 					'from_tag'      => __( 'From Tags', 'global-woo-gallery' )
