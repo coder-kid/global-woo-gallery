@@ -42,7 +42,7 @@ if( ! class_exists('GWPG_Shortcode') ) {
         protected function gwpg_get_images($product) {
             if($this->blend_thumbnails($product)) {
                 foreach($this->blend_thumbnails($product)['urls'] as $url) {
-                    printf('<img src="%s" alt="%s" />', $url[0], esc_attr(get_the_title()));
+                    printf('<div class=""><img src="%s" alt="%s" /></div>', $url[0], esc_attr(get_the_title()));
                 }
             }
         }
@@ -52,18 +52,15 @@ if( ! class_exists('GWPG_Shortcode') ) {
         protected function render_gwpg_product_thumb($products, $product) {
             ob_start();
             ?>
-            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="gwpg-product-thumbnails">
+            <div class="gwpg-product-thumbnails cd-item-wrapper">
                 <?php
                     if( !has_post_thumbnail($products->post->ID) ) {
-                        printf('<img id="place_holder_thm" src="%s" alt="Placeholder" />',wc_placeholder_img_src());
-                    }
-                    if(empty($this->blend_thumbnails($product))) {
-                        the_post_thumbnail();
+                        printf('<div class="cd-item-front"><img id="place_holder_thm" src="%s" alt="Placeholder" /></div>',wc_placeholder_img_src());
                     }else {
-                        $this->gwpg_get_images($product);
+                        the_post_thumbnail('full', ['class'=> 'cd-item-front']);
                     }
                 ?>
-            </a>
+            </div>
             <?php
             return ob_get_clean();
         }
@@ -91,17 +88,32 @@ if( ! class_exists('GWPG_Shortcode') ) {
                 <div class="star-rating" title="<?php echo esc_html__( 'Rated', 'woo-product-slider' ) . ' ' . $average . '' . esc_html__( ' out of 5', 'woo-product-slider' ); ?>"><span style="width:<?php echo ( ( $average / 5 ) * 100 ); ?>'%"><strong itemprop="ratingValue" class="rating"><?php echo $average; ?></strong><?php echo esc_html__( 'out of 5', 'woo-product-slider' ); ?></span></div>
             <?php endif; endif;
         }
+
+        public function add_render_attribute(string $name, array $elements) {
+            if(is_array($elements)) {
+                foreach($elements as $attribute => $attribute_value) {
+                    
+                } 
+            }
+        }
         
         function gwpg_gallery_shortcodes($atts) {
 
             $post_id = ! empty($atts['id']) ? $atts['id'] : '';
             $products = new GWPG_Products;
+            $options  = array_merge($this->default_params, $products->set_params($post_id));
+            $products = $products->get_products(shortcode_atts($options,$atts));
 
-            $products = $products->get_products(
-                        shortcode_atts(array_merge(
-                        $this->default_params,
-                        $products->set_params($post_id)),
-                    $atts));
+            $this->add_render_attribute(
+                'wrapper',
+                [
+                    'class' => [
+                        'gwpg-products-wrapper',
+                        'product-column-'.$options['products_column']
+                    ]
+                ]
+            );
+
             
             ob_start();
             ?>

@@ -6,7 +6,7 @@ if( $product_data['number_of_products'] > 0 ) {
     $products = GWPG_Helper::get_products($product_data);
     ?>
     <div class="gwpg-product-grid">
-        <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_grid_widget woocommerce row">'));
+        <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<div class="gwpg_product_grid_widget woocommerce row">'));
 
 
         while ($products->have_posts()):
@@ -30,7 +30,7 @@ if( $product_data['number_of_products'] > 0 ) {
             <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>
 
-        <?php echo wp_kses_post(apply_filters('woocommerce_after_widget_product_list', '</ul>')); ?>
+        <?php echo wp_kses_post(apply_filters('woocommerce_after_widget_product_list', '</div>')); ?>
     </div>
     <?php
 }
