@@ -36,6 +36,7 @@ class GWPG_Scripts {
         add_action( 'admin_enqueue_scripts', [$this, 'addmin_enqueue_style'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
 		add_action( 'wp_enqueue_scripts', [$this, 'gwpg_frontend_style'] );
+		add_action( 'wp_enqueue_scripts', [$this, 'gwpg_frontend_script'] );
     }
 
     public function admin_enqueue_scripts() {
@@ -72,11 +73,32 @@ class GWPG_Scripts {
         );
 	}
 	
+	/**
+	 * Enqueue Frontend styles
+	 * 
+	 * @access public
+	 */
 	public function gwpg_frontend_style() {
 		wp_enqueue_style(
 			'gwpg-frontend',
 			GWPG_PLUGIN_URI . 'public/assets/css/gwpg-front.min.css',[],
 			GWPG_VERSION
+		);
+	}
+
+	/**
+	 * Enqueue Frontend scripts
+	 * 
+	 * @access public
+	 */
+	public function gwpg_frontend_script()
+	{
+		wp_enqueue_script(
+			'gwpg-frontend',
+			GWPG_PLUGIN_URI . 'public/assets/js/index.js',
+			['jquery'],
+			GWPG_VERSION,
+			true
 		);
 	}
 

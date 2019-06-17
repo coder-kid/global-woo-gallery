@@ -1,120 +1,181 @@
 @import 'partials/grid'
+
+.entry-content
+    background: cyan !important
+
 a
-    display: block;
+    display: block
 
 .gwpg_product_grid_widget
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    margin: 0
+    padding: 0
+    list-style: none
     li
-        text-align: center;
-        margin-bottom: 30px;
+        text-align: center
+        margin-bottom: 30px
 
 .gwpg-product-list
     li 
         .gwpg-product-list-thumb
-            position: relative;
+            position: relative
 
 .gwpg-product-list
     img
-        width: 100%;
+        width: 100%
 
 .gwpg-product-list
     li
         .gwpg-product-list-thumb
             span.onsale
-                position: absolute;
-                top: 0;
-                left: 0;
-                border: none;
-                border-radius: 0;
-                background-color: #e43f0b;
-                color: #ffffff;
-                padding: 10px 15px;
-                font-size: .875em;
-                line-height: 1;
-                min-height: 12px;
-                text-transform: uppercase;
-                font-weight: 600;
-                display: inline-block;
-                margin-bottom: 1em;
+                position: absolute
+                top: 0
+                left: 0
+                border: none
+                border-radius: 0
+                background-color: #e43f0b
+                color: #ffffff
+                padding: 10px 15px
+                font-size: .875em
+                line-height: 1
+                min-height: 12px
+                text-transform: uppercase
+                font-weight: 600
+                display: inline-block
+                margin-bottom: 1em
 
 .gwpg-product-list-thumb,
 .gwpg-product-list-desc
-    color: #607d8b;
-    display: block;
+    color: #607d8b
+    display: block
 
 .gwpg-product-list-desc
-    margin: 10px 0 20px 0;
+    margin: 10px 0 20px 0
 
 .woocommerce .gwpg-product-list-desc .star-rating::before,
 .woocommerce .gwpg-product-list-desc .star-rating span::before
-    left: 0;
-    right: 0;
-    width: 100%;
+    left: 0
+    right: 0
+    width: 100%
 
 
 .gwpg-product-list-left,
 .gwpg-product-list-right
-    padding-left: 0;
-
-.woocommerce
-    .gwpg-product-list-add-to-cart
-        a.button
-            color: #7d7d7d;
-            background: #e8e8e8;
-            padding: 9px 18px;
-            border: none;
-            border-radius: 0;
-            display: inline-block;
-
-.woocommerce
-    .gwpg-product-list-add-to-cart
-        a.button:hover
-            background-color: #3e3e3e;
-            color: #ffffff;
+    padding-left: 0
 
 
 .gwpg-product-list-title, 
 .gwpg-product-list-add-to-cart, 
 .gwpg-product-list-desc
     .star-rating
-        display: block;
-        width: 100%;
+        display: block
+        width: 100%
 
 .gwpg-product-list-add-to-cart, 
 .gwpg-product-list-desc
     .star-rating
-        margin: 10px 0 5px 0;
+        margin: 10px 0 5px 0
 
 
 .gwpg-product-list-desc
     .star-rating
-        margin: 0 auto .5407911001em;
+        margin: 0 auto .5407911001em
 
 
 .gwpg-product-list-title
     h2
-        font-size: 18px;
-        padding: 0;
-        margin: 0px 0 10px 0;
+        font-size: 18px
+        padding: 0
+        margin: 0px 0 10px 0
 
 .gwpg-category-desc
     .gwpg-category-title
-        font-size: 24px;
-        padding: 0;
-        margin: 10px 0 10px 0;
+        font-size: 24px
+        padding: 0
+        margin: 10px 0 10px 0
 
 .star-rating
-    margin: 0 auto;
+    margin: 0 auto
 
 
 .gwpg_product_list_widget.woocommerce
-    overflow: hidden;
+    overflow: hidden
+    margin: 0 -20px
+    padding: 0
+    list-style: none
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
     .gwgp-product
-        float: left;
-        width: 25%;
+        position: relative
+        padding: 0
+        margin: 0px 20px 40px 20px
+        flex-basis: 25%
+        .gwpg-product-inner
+            position: relative
+            overflow: hidden
+            transition: box-shadow .4s,background-color .3s
+            &:hover .gwgp-product-buttons
+                .add_to_cart_inline
+                    transform: none
+                    opacity: 1
         .gwpg-product-thumbnails
-            position: relative;
+            overflow: hidden
+            position: relative
 
+        .product-summary
+            padding: 14px 20px
+            transition: .4s
 
+            .light-weight-product-title
+                font-size: 16px
+                font-weight: 400
+                margin: 0 0 6px
+                a
+                    color: #161619
+            .price
+                font-size: 14px
+                font-weight: 500
+                display: block
+                transition: .4s
+            .star-rating
+                margin: 0
+                transition: .4s
+            .gwgp-product-buttons
+                position: relative
+                display: flex
+                flex-direction: row
+                flex-wrap: wrap
+                .add_to_cart_inline
+                    border: 0px solid !important
+                    margin: 0 !important
+                    flex-basis: 80%;
+                    width: 80%;
+                    padding: 12px 12px 12px 0 !important
+                    a
+                        padding: 0
+                        background: 0
+                        color: #161619
+                        line-height: 25px
+                        font-weight: 600
+                        font-size: 14px
+
+                .yith-wcwl-add-to-wishlist
+                    margin: 0
+                    flex-basis: 20%;
+                    width: 20%;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    padding: 10px
+
+                    
+
+.gwpg-product-inner:hover
+    .product-summary
+        transform: translateY(-40px)
+        background-color: #fff
+        .gwgp-product-buttons
+            p
+                transform: none
+                opacity: 1 !important
+                color: #161619 !important

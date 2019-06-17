@@ -16,6 +16,11 @@ if( ! class_exists( 'GWPG_Products' ) ) {
          */
         private static $_instance = null;
 
+
+        private $post_id;
+
+        public $product_options;
+
         /**
          * Allows for accessing single instance of class. Class should only be constructed once per call.
          *
@@ -31,21 +36,40 @@ if( ! class_exists( 'GWPG_Products' ) ) {
             return self::$_instance;
         }
 
-        public function __construct() {
+        protected $product_params = [
+            'products_template'         => 'grid',
+            'total_products'            => 6,
+            'products_orderby'          => 'date',
+            'products_order'            => 'ASC',
+            'product_theme'             => 'premium_light',
+            'products_column'           => 3,
+            'products_column_on_tablet' => 1,
+            'products_column_on_mobile' => 1,
+            'products_from'             => '',
+            'product_from_category'     => '',
+            'product_from_tag'          => ''
+        ];
 
+        public function __construct(int $post_id) {
+            $this->post_id = $post_id;
+            $this->product_options = $this->product_options();
         }
 
-        public function set_params(int $id) {
-            $meta_val = unserialize(get_post_meta($id, 'gwpg_meta_values', true));
+        public function current_product_meta() {
+            return unserialize(get_post_meta($this->post_id, 'gwpg_meta_values', true));
+        }
+        
+
+        public function product_options() {
             $result = [];
-            if($meta_val) {
-                foreach($meta_val as $key => $value) {
+            if($this->current_product_meta()) {
+                foreach($this->current_product_meta() as $key => $value) {
                     $key = str_replace('gwpg_', '', $key);
                     $result[$key] = $value;
                 }
             }
             
-            return $result;
+            return array_merge($this->product_params, $result);
         }
 
         /**
@@ -56,10 +80,17 @@ if( ! class_exists( 'GWPG_Products' ) ) {
          * @param $order
          * @return WP_Query
          */
-        public static function get_products($data) {
+        public function get_products() {
 
             if( ! class_exists('WooCommerce') ) return;
-            extract($data);
+
+            $options = $this->product_options();
+
+            $this->product_options = $options;
+
+
+
+            extract($options);
 
             $query_args = [
                 'posts_per_page' => $total_products,
