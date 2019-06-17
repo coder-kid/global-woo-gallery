@@ -11,16 +11,35 @@ function gwpg_generate_metabox() {
 	'section_title' => 'Product Settings',
 		'fields'			=> [
 			[
-				'id'      => 'gwpg_products_template',
-				'name'    => __( 'Choose Template', 'global-woo-gallery' ),
-				'type'    => 'select',
-				'desc'    => __( 'Select which template you want to display.', 'global-woo-gallery' ),
-				'options' => [
-					'grid'    => __( 'Grid', 'global-woo-gallery' ),
-					'list'    => __( 'List', 'global-woo-gallery' ),
-					'masonry' => __( 'Masonry', 'global-woo-gallery' )
-				],
-				'default' => 'grid'
+				'id'		=> 'gwpg_products_from',
+				'name'		=> __( 'Products From', 'global-woo-gallery' ),
+				'type'		=> 'select',
+				'desc'		=> __( 'Select an option to show the product from.', 'global-woo-gallery' ),
+				'options'	=> [
+					'latest'        => __( 'Latest', 'global-woo-gallery' ),
+					'onsale'        => __( 'Onsale', 'global-woo-gallery' ),
+					'featured'      => __( 'Featured', 'global-woo-gallery' ),
+					'from_category' => __( 'From Category', 'global-woo-gallery' ),
+					'from_tag'      => __( 'From Tags', 'global-woo-gallery' )
+				]
+			],
+			[
+				'id'		=> 'gwpg_product_from_category',
+				'name'		=> __( 'Product Categories', 'global-woo-gallery' ),
+				'type'		=> 'select',
+				'desc'		=> __( 'Select category for products.', 'global-woo-gallery' ),
+				'options'	=> GWPG_Helper::gwpg_get_wc_categories(),
+				'multiple'	=> true,
+				'dependency' => ['gwpg_products_from', '==', 'from_category' ]
+			],
+			[
+				'id'		=> 'gwpg_product_from_tag',
+				'name'		=> __( 'Product Tags', 'global-woo-gallery' ),
+				'type'		=> 'select',
+				'desc'		=> __( 'Select tags for products.', 'global-woo-gallery' ),
+				'options'	=> GWPG_Helper::get_all_tags(),
+				'multiple'	=> true,
+				'dependency' => ['gwpg_products_from', '==', 'from_tag' ]
 			],
 			[
 				'id'         => 'gwpg_total_products',
@@ -70,41 +89,22 @@ function gwpg_generate_metabox() {
 				'type'    => 'select',
 				'desc'    => __( 'Select which theme you want to display.', 'global-woo-gallery' ),
 				'options' => [
-					'theme_one'   => __( 'Theme One', 'global-woo-gallery' ),
-					'theme_two'   => __( 'Theme Two', 'global-woo-gallery' ),
-					'theme_three' => __( 'Theme Three', 'global-woo-gallery' ),
+					'premium_light' => __( 'Premium Light', 'global-woo-gallery' ),
+					'advance_card'  => __( 'Advance Card', 'global-woo-gallery' )
 				],
-				'default' => 'theme_one'
+				'default' => 'premium_light'
 			],
 			[
-				'id'		=> 'gwpg_products_from',
-				'name'		=> __( 'Products From', 'global-woo-gallery' ),
-				'type'		=> 'select',
-				'desc'		=> __( 'Select an option to show the product from.', 'global-woo-gallery' ),
-				'options'	=> [
-					'onsale'        => __( 'Latest', 'global-woo-gallery' ),
-					'featured'      => __( 'Featured', 'global-woo-gallery' ),
-					'from_category' => __( 'From Category', 'global-woo-gallery' ),
-					'from_tag'      => __( 'From Tags', 'global-woo-gallery' )
-				]
-			],
-			[
-				'id'		=> 'gwpg_product_from_category',
-				'name'		=> __( 'Product Categories', 'global-woo-gallery' ),
-				'type'		=> 'select',
-				'desc'		=> __( 'Select category for products.', 'global-woo-gallery' ),
-				'options'	=> GWPG_Helper::gwpg_get_wc_categories(),
-				'multiple'	=> true,
-				'dependency' => ['gwpg_products_from', '==', 'from_category' ]
-			],
-			[
-				'id'		=> 'gwpg_product_from_tag',
-				'name'		=> __( 'Product Tags', 'global-woo-gallery' ),
-				'type'		=> 'select',
-				'desc'		=> __( 'Select tags for products.', 'global-woo-gallery' ),
-				'options'	=> GWPG_Helper::get_all_tags(),
-				'multiple'	=> true,
-				'dependency' => ['gwpg_products_from', '==', 'from_tag' ]
+				'id'      => 'gwpg_products_template',
+				'name'    => __( 'Choose Template', 'global-woo-gallery' ),
+				'type'    => 'select',
+				'desc'    => __( 'Select which template you want to display.', 'global-woo-gallery' ),
+				'options' => [
+					'grid'    => __( 'Grid', 'global-woo-gallery' ),
+					'list'    => __( 'List', 'global-woo-gallery' ),
+					'masonry' => __( 'Masonry', 'global-woo-gallery' )
+				],
+				'default' => 'grid'
 			],
 			[
 				'id'    => 'gwpg_products_column',
