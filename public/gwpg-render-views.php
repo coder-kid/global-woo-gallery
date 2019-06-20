@@ -68,7 +68,7 @@ if( ! class_exists('GWPG_Shortcode') ) {
             ?>
             <div class="gwgp-product-buttons">
                 <?php echo do_shortcode( '[add_to_cart id="' . get_the_ID() . '" show_price="false"]' ); ?>
-                <?php echo do_shortcode( '[yith_wcwl_add_to_wishlist label=" " product_id="'.get_the_ID().'" icon="fa fa-heart" product_added_text=" " already_in_wishslist_text=" " wishlist_url browse_wishlist_text=\'<i class="fa fa-eye"></i>\' ]' ); ?>
+                <?php echo do_shortcode( '[yith_wcwl_add_to_wishlist label=" " product_id="'.get_the_ID().'" icon="fa fa-heart-o" product_added_text=" " already_in_wishslist_text=" " wishlist_url browse_wishlist_text=\'<i class="fa fa-heart"></i>\' ]' ); ?>
             </div>
             <?php
         }
@@ -86,14 +86,17 @@ if( ! class_exists('GWPG_Shortcode') ) {
 
             $post_id  = ! empty($atts['id']) ? $atts['id'] : '';
             $products = new GWPG_Products($post_id);
+            $options = $products->product_options();
             $products = $products->get_products();
+
+            // echo '<pre>', print_r($options), '</pre>';
 
             ob_start();
             ?>
-            <div class="gwpg-products-wrapper">
+            <div class="gwpg-products-wrapper<?php echo ' gwpg-products-template-'.$options['products_template']; ?><?php echo ' gwpg-products-theme-'.$options['product_theme']; ?><?php echo ' gwpg-products-column-'.$options['products_column']; ?><?php echo ' gwpg-products-column-tablet-'.$options['products_column_on_tablet']; ?><?php echo ' gwpg-products-column-mobile-'.$options['products_column_on_mobile']; ?>">
                 <?php
                     if($products->posts) {
-                        include('views/blocks/block-product-list.php');
+                        include('views/blocks/block-product-grid.php');
                     }else {
                         echo 'Something is went wrong!';
                     }

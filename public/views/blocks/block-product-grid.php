@@ -1,36 +1,22 @@
-<?php
-
-if( $product_data['number_of_products'] > 0 ) {
-
-    // $products = GWPG_Helper::get_products($number_of_products, $category, $show, $orderby, $order);
-    $products = GWPG_Helper::get_products($product_data);
-    ?>
-    <div class="gwpg-product-grid">
-        <?php echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<div class="gwpg_product_grid_widget woocommerce row">'));
-
-
-        while ($products->have_posts()):
-            $products->the_post();
-            ?>
-            <li <?php post_class('col-sm-2'); ?> >
-                <div class="product-wrap-pl" data-mh="gwpg-product-grid">
-                    <span class="gwpg-product-grid-left">
-                        <span class="gwpg-product-grid-thumb">
-                            <?php GWPG_Helper::get_block('product-thumb', true, false); ?>
-                        </span>
-                    </span>
-
-                    <span class="gwpg-product-grid-right">
-                        <span class="gwpg-product-grid-desc">
-                            <?php GWPG_Helper::get_block('product-add-to-cart', true, false); ?>
-                        </span>
-                    </span>
-                </div>            
-            </li>
-            <?php endwhile; ?>
-        <?php wp_reset_postdata(); ?>
-
-        <?php echo wp_kses_post(apply_filters('woocommerce_after_widget_product_list', '</div>')); ?>
-    </div>
+<div class="gwpg-product-grid row">
     <?php
-}
+        echo wp_kses_post(apply_filters('woocommerce_before_widget_product_list', '<ul class="gwpg_product_list_widget woocommerce">'));
+        while ($products->have_posts()): $products->the_post();
+            global $product;
+
+    ?>
+        <li <?php echo post_class( 'gwgp-product' ); ?>>
+            <div class="gwpg-product-inner">
+                <?php echo $this->render_gwpg_product_thumb($products, $product); ?>
+                <div class="product-summary">
+                    <h2 class="light-weight-product-title"><a href="<?php echo esc_url(get_the_permalink()); ?>"><?php the_title(); ?></a></h2>
+                    <?php echo $this->gwpg_product_price($product); ?>
+                    <?php echo $this->gwpg_product_rating($product); ?>
+                    <?php echo $this->gwpg_add_cart(); ?>
+                </div>
+            </div>
+        </li>
+
+    <?php endwhile; wp_reset_postdata();?>
+    <?php echo wp_kses_post(apply_filters('woocommerce_after_widget_product_list', '</ul>')); ?>
+</div>

@@ -19,8 +19,6 @@ if( ! class_exists( 'GWPG_Products' ) ) {
 
         private $post_id;
 
-        public $product_options;
-
         /**
          * Allows for accessing single instance of class. Class should only be constructed once per call.
          *
@@ -50,17 +48,19 @@ if( ! class_exists( 'GWPG_Products' ) ) {
             'product_from_tag'          => ''
         ];
 
-        public function __construct(int $post_id) {
+        public function __construct(int $post_id)
+        {
             $this->post_id = $post_id;
-            $this->product_options = $this->product_options();
         }
 
-        public function current_product_meta() {
+        public function current_product_meta()
+        {
             return unserialize(get_post_meta($this->post_id, 'gwpg_meta_values', true));
         }
         
 
-        public function product_options() {
+        public function product_options()
+        {
             $result = [];
             if($this->current_product_meta()) {
                 foreach($this->current_product_meta() as $key => $value) {
@@ -85,11 +85,6 @@ if( ! class_exists( 'GWPG_Products' ) ) {
             if( ! class_exists('WooCommerce') ) return;
 
             $options = $this->product_options();
-
-            $this->product_options = $options;
-
-
-
             extract($options);
 
             $query_args = [
