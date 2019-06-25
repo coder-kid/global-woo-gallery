@@ -78,7 +78,7 @@ if( ! class_exists('GWPG_Shortcode') ) {
                     $average = $product->get_average_rating();
                     if( $average > 0 ) :
             ?>
-                <div class="star-rating" title="<?php echo esc_html__( 'Rated', 'woo-product-slider' ) . ' ' . $average . '' . esc_html__( ' out of 5', 'woo-product-slider' ); ?>"><span style="width:<?php echo ( ( $average / 5 ) * 100 ); ?>'%"><strong itemprop="ratingValue" class="rating"><?php echo $average; ?></strong><?php echo esc_html__( 'out of 5', 'woo-product-slider' ); ?></span></div>
+                <div class="star-rating" title="<?php echo esc_html__( 'Rated', 'global-woo-gallery' ) . ' ' . $average . '' . esc_html__( ' out of 5', 'global-woo-gallery' ); ?>"><span style="width:<?php echo ( ( $average / 5 ) * 100 ); ?>'%"><strong itemprop="ratingValue" class="rating"><?php echo $average; ?></strong><?php echo esc_html__( 'out of 5', 'global-woo-gallery' ); ?></span></div>
             <?php endif; endif;
         }
         
@@ -89,16 +89,14 @@ if( ! class_exists('GWPG_Shortcode') ) {
             $options = $products->product_options();
             $products = $products->get_products();
 
-            // echo '<pre>', print_r($options), '</pre>';
-
             ob_start();
             ?>
             <div class="gwpg-products-wrapper<?php echo ' gwpg-products-template-'.$options['products_template']; ?><?php echo ' gwpg-products-theme-'.$options['product_theme']; ?><?php echo ' gwpg-products-column-'.$options['products_column']; ?><?php echo ' gwpg-products-column-tablet-'.$options['products_column_on_tablet']; ?><?php echo ' gwpg-products-column-mobile-'.$options['products_column_on_mobile']; ?>">
                 <?php
-                    if($products->posts) {
+                    if($products && $products->posts) {
                         include('views/blocks/block-product-grid.php');
                     }else {
-                        echo 'Something is went wrong!';
+                        echo _e( 'No products found, please add or import products.', 'global-woo-gallery' );
                     }
                 ?>
             </div>
