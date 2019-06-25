@@ -68,7 +68,11 @@ if( ! class_exists('GWPG_Shortcode') ) {
             ?>
             <div class="gwgp-product-buttons">
                 <?php echo do_shortcode( '[add_to_cart id="' . get_the_ID() . '" show_price="false"]' ); ?>
-                <?php echo do_shortcode( '[yith_wcwl_add_to_wishlist label=" " product_id="'.get_the_ID().'" icon="fa fa-heart-o" product_added_text=" " already_in_wishslist_text=" " wishlist_url browse_wishlist_text=\'<i class="fa fa-heart"></i>\' ]' ); ?>
+                <?php
+                    if(shortcode_exists('yith_wcwl_add_to_wishlist')) {
+                        echo do_shortcode( '[yith_wcwl_add_to_wishlist label=" " product_id="'.get_the_ID().'" icon="fa fa-heart-o" product_added_text=" " already_in_wishslist_text=" " wishlist_url browse_wishlist_text=\'<i class="fa fa-heart"></i>\' ]' );
+                    }
+                ?>
             </div>
             <?php
         }
